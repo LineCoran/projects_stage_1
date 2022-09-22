@@ -1,0 +1,289 @@
+body {
+    width: 100vw;
+    height: 100%;
+    background-color: #fff;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+*,
+*:before,
+*:after  {
+    box-sizing: border-box;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: black;
+}
+
+.wrapper {
+    max-width: 1160px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header__inner {
+    display: flex;
+    padding: 14px;
+    align-items: center;
+
+    color: #fff;
+}
+
+.header__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 3px;
+    border: 1px solid #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.header__nav {
+    margin-left: 5.43%;
+}
+
+.nav__list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav__list__item__link {
+    display: inline-block;
+    width: 100%;
+    margin-right: 58px;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 500;
+
+    transition: color 0.25s linear;
+}
+
+.nav__list__item__link:hover {
+    color: orange;
+}
+
+.nav__list:last-child {
+    margin-right: 0px;
+}
+
+.header__designed {
+    margin-left: 37.758%;
+}
+
+.designed__link {
+    display: block;
+    width: max-content;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* _____________HEADER END ________________ */
+
+/* _____________MAIN START ________________ */
+
+.header__wrapper {
+    width: 100%;
+    height: 100%;
+    background: url(../../assets/images/panda-big.jpg) center center / cover no-repeat;
+}
+
+.main__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+} 
+
+.main__title {
+    margin-top: 86px;
+    padding: 0 9px;
+    position: relative;
+}
+
+.lined-text {
+   width: max-content;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.lined-text::after {
+    content: "";
+    position: absolute;
+    top: -65px;
+    left: -70px;
+    height: 465px;
+    width: 465px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #f9804b 100%, #fe9013 100%);
+}
+
+.lined-text__word {
+    color: #fff;
+    font-size: 6.66rem;
+    line-height: 4.99rem;
+    font-weight: 700;
+    z-index: 3;
+}
+
+.lined-text__word-yellow {
+    color: #ffee2e;
+}
+
+.button {
+    margin: 60px 0 100px 0;
+    padding: 16px 92px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 22.4px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #f9804b 100%, #fe9013 100%);
+}
+
+/* ____________MAIN END_____________  */
+
+
+/*_____________WORLD START__________  */
+
+.world {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 75px;
+}
+
+.world__inner {
+    display: flex;
+    align-items: center;
+}
+
+.world__image {
+    margin-right: 7.5%;
+}
+
+.world__info {
+    display: flex;
+    align-items: center;
+}
+
+.world__text {
+    width: 465px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 20px;
+    color: #333b41;
+}
+
+.info__title {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 57.6px;
+}
+
+.info__text {
+    margin-bottom: 54px;
+    font-weight: 400;
+    line-height: 20.8px;
+}
+
+.info__subtitle {
+
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 34px;
+    line-height: 28.8px;
+}
+
+.info__text-second {
+    margin-bottom: 0;
+}
+
+/* ________WORLD END ___________ */
+
+/* ________ANIMALS START ___________ */
+
+.animals {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.animals__cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.animal__card {
+    width: 31.55%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid orange;
+    border-radius: 5px;
+}
+
+.animal__card-photo {
+    width: 100%;
+    height: 366px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: url(../..//assets/images/rectangle_1.jpg) center center/ contain no-repeat;
+}
+
+.animal__card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px 16px;
+}
+
+.animal__card-name {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 22.4px;
+}
+
+.animal__card-country {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+}
