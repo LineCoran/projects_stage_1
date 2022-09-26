@@ -1,0 +1,14 @@
+{
+  "name": "online-zoo",
+  "version": "1.0.0",
+  "description": "Private repository for @linecoran",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LineCoran",
+  "license": "ISC",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
