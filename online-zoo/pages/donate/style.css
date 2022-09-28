@@ -3,7 +3,9 @@
     --orange-dark: #E47209;
     --green: #4b9200;
 }
-
+html {
+    width: 100%;
+}
 body {
     width: 100vw;
     height: 100%;
@@ -449,7 +451,7 @@ header {
     background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
     opacity: 0.9;
     padding-top: 40px;
-    padding-bottom: 100px;
+    padding-bottom: 180px;
 }
 
 .payment__inner {
@@ -464,7 +466,7 @@ header {
 }
 
 .pick__header__title {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 400;
     line-height: 2.925rem;
     text-transform: uppercase;
@@ -475,13 +477,14 @@ header {
 .pick__header__text {
     font-size: 1rem;
     font-weight: 500;
-    line-height: 1.4rem;
+    line-height: 1.3rem;
+    letter-spacing: -0.02px;
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .pick__header__subtitle {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 400;
     line-height: 2.925rem;
     color: var(--orange);
@@ -495,8 +498,9 @@ header {
 
 .description__title {
     text-align: center;
-    margin-top: 43px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-left: -16px;
+    margin-bottom: 20px;
     font-size: 3rem;
     color: #fe9013;
     font-weight: 400;
@@ -519,12 +523,15 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 48px;
+    margin-bottom: 43px;
+    
 }
 
 .counts-of-pands {
     display: flex;
     flex-direction: column;
+    padding-top: 50px;
+    padding-right: 16px;
     align-items: center;
     justify-content: center;
     margin-right: 11px;
@@ -547,6 +554,11 @@ header {
 
 .cross__icon {
     margin-right: 64px;
+    transform: translate(-15px, 12px);
+}
+
+.panda__image {
+    transform: translate(-15px, 0);
 }
 
 
@@ -555,7 +567,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 94px;
 }
 
 .money__input__wrapper {
@@ -594,6 +606,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
     margin-bottom: 31px;
     margin-top: 25px;
+    width: 206px;
 }
 
 
@@ -655,7 +668,7 @@ margin-right: 50px;
     font-weight: 400;
     color: #000;
     line-height: 1.4rem;
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 }
 
 .feed {
@@ -740,8 +753,8 @@ margin-right: 50px;
 .feed__label__count {
     position: absolute;
     display: flex;
-    top: 45px;
-    left: -11px;
+    top: 53px;
+    left: -15px;
     font-size: 1.625rem;
     font-weight: 500;
     color: #333b41;
@@ -861,10 +874,14 @@ margin-right: 50px;
 }
 
 .payment__button {
-    width: 292px;
+    width: 295px;
     padding: 16px 0;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     margin-top: 0;
+}
+
+.payment-button__wrapper-text {
+    margin-bottom: 64px;
 }
 
 .payment__step--arrow::after {
@@ -1167,6 +1184,7 @@ input::-webkit-slider-thumb:hover {
 
 .header__nav-footer .nav__list {
     margin: 0;
+    transform: translate(0px, 0px);
 }
 
 .footer__disign-info {
@@ -1175,6 +1193,7 @@ input::-webkit-slider-thumb:hover {
 
 .design-text {
     width: max-content;
+    margin-bottom: 4px;
     font-size: 1rem;
     font-weight: 100;
     line-height: 1.3rem;
