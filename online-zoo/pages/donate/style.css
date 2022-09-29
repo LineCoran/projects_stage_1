@@ -580,13 +580,9 @@ header {
     padding: 16px 9px;
 }
 
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearence: none;
+.pick__money::-webkit-outer-spin-button,
+.pick__money::-webkit-inner-spin-button {
+-webkit-appearance: none;
 }
 
 .pick__money {
@@ -1109,6 +1105,7 @@ input::-webkit-slider-thumb:hover {
     border-radius: 5px;
     background-color: #f1f3f2;
     color: #000;
+    transition: 0.3s linear;
 }
 
 .subscribe__button:hover {
