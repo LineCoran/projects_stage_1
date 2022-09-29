@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
 
 
-    <title>Document</title>
+    <title>Donate</title>
 </head>
 
 <body>
@@ -233,7 +233,7 @@
                         <div class="payment-button__wrapper">
 
                             <div class="money__input__wrapper">
-                                <input type="number" placeholder="Another amount" min="1" max="9999" maxlength="4"
+                                <input type="number" placeholder="Another amount" min="1" max="9999" oninput="if(value.length > 4) value = value.slice (0,4)"
                                     class="pick__money">
                                 <span>$</span>
                             </div>
@@ -248,7 +248,7 @@
                                 </div>
 
                                 <div class="label__list__item">
-                                    <input type="radio" id="once" name="radio" class="input__radio">
+                                    <input type="radio" id="once" name="radio" class="input__radio" checked>
                                     <label for="once" class="label__item-label">
                                         <div class="input__circle"></div>
                                     </label>
