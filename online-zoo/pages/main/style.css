@@ -42,7 +42,7 @@ ul {
 
 .container {
     max-width: 1600px;
-    width: 100vw;
+    min-width: none;
     margin: 0 auto;
     overflow-x: hidden;
 }
@@ -367,6 +367,8 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    row-gap: 25px;
+    column-gap: 30px;
 }
 
 .animal__card {
@@ -376,19 +378,19 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    margin-right: 30px;
-    margin-bottom: 25px;
+    /* margin-right: 30px;
+    margin-bottom: 25px; */
     border: 1px solid var(--orange);
     border-radius: 5px;
 }
 
-.animal__card:nth-child(n+4) {
+/* .animal__card:nth-child(n+4) {
     margin-bottom: 0px;
 }
 
 .animal__card:nth-child(3n) {
     margin-right: 0px;
-}
+} */
 
 .animal__card-photo {
     width: 100%;
@@ -882,11 +884,6 @@ input::-webkit-slider-thumb:hover {
     border-radius: 5px;
 }
 
-
-.social__list-active360px {
-    display: none;
-}
-
 .footer__info {
     display: flex;
     justify-content: space-between;
@@ -930,6 +927,10 @@ input::-webkit-slider-thumb:hover {
     transition: 0.3s linear;
 }
 
+.social__list-active360px {
+    display: none;
+}
+
 .social__item:hover .social__icon {
     background: var(--green);
 }
@@ -961,43 +962,76 @@ input::-webkit-slider-thumb:hover {
 }
 
 @media(max-width: 1240px) {
-    .container {
-        /* max-width: 1000px; */
-        width: 100vw;
+
+    header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
     }
+    
     .wrapper {
         width: 94%;
     }
 
+    .header__inner {
+        padding: 13px 0;
+    }
+
+    .header__nav-header {
+        margin-left: 7%;
+    }
+    .header__nav-header .nav__list__item__link {
+        margin-right: 48px;
+    }
+
+    .main {
+        padding-top: 80px;
+    }
+
+    .main__inner {
+        padding-right: 6%;
+    }
+
     .main__title {
         margin-top: 43px;
+        /* margin-right: 6%; */
     }
 
     .lined-text__word {
         font-size: 5.3125rem;
-        line-height: 3.8rem;
+        line-height: 4rem;
     }
 
     .lined-text::after {
         height: 367px;
         width: 367px;
         top: -54px;
-        right: 10px;
+        right: 91px;
+        z-index: 1;
     }
 
-    .button {
+    .main__button {
+        margin-right: 5.7%;
+    }
+
+    .main__button .button {
         margin: 40px 0 47px 0;
     }
 
 
     .world {
+        margin-top: 95px;
         margin-bottom: 142px;
     }
 
 
     .world__image {
-        width: 43.38%;
-        margin-right: 3.3%;
+        min-width:auto;
+        width: 48.38%;
+        margin-right: 3%;
+        height: 409px;
         background-size: cover;
     }
 
@@ -1006,7 +1040,7 @@ input::-webkit-slider-thumb:hover {
     }
 
     .world__text {
-        margin-right: none;
+        margin-right: 0;
     }
 
     .world__info-pic {
@@ -1015,13 +1049,17 @@ input::-webkit-slider-thumb:hover {
 
     .info__title {
         line-height: 3.6rem;
-        letter-spacing: -1px;
+    }
+
+    .animals__cards {
+        row-gap: 92px;
+        column-gap: 29px;
     }
 
     .animal__card {
         width: 31.27%;
-        margin-right: 29px;
-        margin-bottom: 92px;
+        /* margin-right: 29px;
+        margin-bottom: 92px; */
     }
 
     .animal__card-photo {
@@ -1033,11 +1071,15 @@ input::-webkit-slider-thumb:hover {
         height: 100%;
     }
 
+    .animal__card__footer {
+        padding: 8px 10px 12px 16px
+    }
+
     .animals__button-left {
-        left: 380px;
+        left: 385px;
     } 
     .animals__button-right {
-        right: 380px;
+        right: 384px;
     }
 
     .button-animals {
@@ -1074,8 +1116,7 @@ input::-webkit-slider-thumb:hover {
     }
 
     .payment__text {
-        letter-spacing: 0.1px;
-        margin-right: 8.30%;
+        margin-right: 9%;
     }
 
     .payment-process {
@@ -1083,12 +1124,24 @@ input::-webkit-slider-thumb:hover {
         margin-top: 40px;
     }
 
+    .process__title {
+        margin-bottom: 42px;
+    }
+
     .payment__steps {
-        justify-content: space-around;
+        justify-content: space-around
     } 
 
+    .payment__step {
+        margin-right: -46px;
+    }
+
+    .payment__step:last-child{
+        margin-right: 0;
+    }
+
     .payment__button {
-        margin: 70px 0 50px 0;
+        margin: 73px 0 50px 0;
     }
 
 
@@ -1125,10 +1178,6 @@ input::-webkit-slider-thumb:hover {
 }
 
 @media(max-width: 999px) {
-
-    .container {
-        width: 100vw;
-    }
 
     .wrapper {
         width: 93.75%;
