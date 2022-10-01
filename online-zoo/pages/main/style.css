@@ -42,7 +42,8 @@ ul {
 }
 
 .container {
-    width: 1600px;
+    max-width: 1600px;
+    width: 100vw;
     margin: 0 auto;
     overflow-x: hidden;
 }
@@ -52,8 +53,7 @@ header {
 }
 
 .wrapper {
-    max-width: 1160px;
-    width: 100%;
+    width: 72.5%;
     margin: 0 auto;
 }
 
@@ -259,15 +259,21 @@ header {
 }
 
 .world__inner {
+    width: 100%;
     display: flex;
     align-items: center;
 }
 
 .world__image {
+    width: 100%;
+    min-width: 52.5%;
+    height: 403px;
+    background: url("../../assets/images/bamboo-cap.jpg") center center / contain no-repeat;
     margin-right: 7.5%;
 }
 
 .world__info {
+    width: 40%;
     display: flex;
     align-items: center;
 }
@@ -452,13 +458,18 @@ header {
 }
 
 .animals__image-palma {
+    width: 18.25%;
+    height: 460px;
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: -1;
+    background: url(../../assets/images/palm_foto.jpg) center bottom / contain no-repeat;
 }
 
 .animals__image-strelitsia {
+    width: 23%;
+    height: 275px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -631,11 +642,14 @@ header {
 .review__list {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    overflow-x: hidden;
+    /* justify-content: space-between; */
 }
 
 .review__item {
-    width: 23.10%;
+    max-width: 268px;
+    min-width: 268px;
+    margin-right: 29px;
     height: 392px;
     display: flex;
     flex-direction: column;
@@ -647,6 +661,7 @@ header {
 }
 
 .review__item__inner {
+    height: 100%;
     padding: 15px 15px 19px 16px;
     border-radius: 18px;
     background-color: #f1f3f2;
@@ -905,6 +920,170 @@ input::-webkit-slider-thumb:hover {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.designgnn {
-    margin-top: 10px;
+.design-text-top {
+    margin-bottom: 10px;
+}
+
+@media(max-width: 1240px) {
+    .container {
+        max-width: 1000px;
+        width: 100vw;
+    }
+    .wrapper {
+        width: 940px    ;
+    }
+
+    .main__title {
+        margin-top: 43px;
+    }
+
+    .lined-text__word {
+        font-size: 5.3125rem;
+        line-height: 3.8rem;
+    }
+
+    .lined-text::after {
+        height: 367px;
+        width: 367px;
+        top: -54px;
+        left: -64px;
+    }
+
+    .button {
+        margin: 40px 0 47px 0;
+    }
+
+
+    .world {
+        margin-bottom: 142px;
+    }
+
+
+    .world__image {
+        width: 43.38%;
+        margin-right: 3.3%;
+        background-size: cover;
+    }
+
+    .world__info {
+        width: 48.29%;
+    }
+
+    .world__text {
+        margin-right: none;
+    }
+
+    .world__info-pic {
+        display: none;
+    }
+
+    .info__title {
+        line-height: 3.6rem;
+        letter-spacing: -1px;
+    }
+
+    .animal__card {
+        width: 31.27%;
+        margin-right: 29px;
+        margin-bottom: 92px;
+    }
+
+    .animal__card-photo {
+        height: 294px;
+    }
+
+    .card-photo {
+        width: 100%;
+        height: 100%;
+    }
+
+    .animals__button-left {
+        left: 380px;
+    } 
+    .animals__button-right {
+        right: 380px;
+    }
+
+    .button-animals {
+        margin: 80px 0 140px 0 ;
+    }
+
+    .animals__image-palma {
+        width: 19.4%;
+        background: url(../../assets/images/palm_foto_1000px.jpg) center bottom / contain no-repeat;
+    }
+
+    .animals__image-strelitsia {
+        width: 24.1%;
+        height: 180px;
+    }
+
+
+    .payment {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .description__title {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .payment__subtitle {
+        margin-bottom: 20px;
+    }
+
+    .description__text {
+        margin-left: 5.21%;
+    }
+
+    .payment__text {
+        letter-spacing: 0.1px;
+        margin-right: 8.30%;
+    }
+
+    .payment-process {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .payment__steps {
+        justify-content: space-around;
+    } 
+
+    .payment__button {
+        margin: 70px 0 50px 0;
+    }
+
+
+    .testi__inner {
+        margin-top: 100px;
+    }
+
+    .testi__title {
+        margin-bottom: 30px;
+
+    }
+
+    .review__item {
+        min-width: 294px;
+        height: 391px;
+    } 
+
+    .testi__bar {
+        margin-top: 20px;
+        margin-bottom: 52px;
+    }
+
+    .testi__button {
+        margin: 0 0 120px 0;
+    }
+
+    .footer__button {
+        margin: 0 0 44px 0;
+    } 
+
+    
+
+
 }
