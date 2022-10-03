@@ -1624,9 +1624,6 @@ input::-webkit-slider-thumb:hover {
         margin-bottom: 30px;
     }
 
-    .payment__inner {
-        align-items: flex-start;
-    }
     .description__title {
         font-size: 1.5rem;
         line-height: 1.8rem;
@@ -1639,10 +1636,7 @@ input::-webkit-slider-thumb:hover {
         margin-bottom: 10px;
     }
 
-    .amount__panda {
-        justify-content: stretch;
-        margin-bottom: 5px;
-    }
+    
 
     .counts-of-pands {
         padding-top: 36px;
@@ -1681,6 +1675,7 @@ input::-webkit-slider-thumb:hover {
 
     .panda__icon {
         width: 100%;
+        max-width: 150px;
     }
 
     .feed__inner-name {
@@ -1832,6 +1827,16 @@ input::-webkit-slider-thumb:hover {
     #navwidth320px .nav__list__item__link {
         margin-right: 0;
     }
+}
 
-    
+@media(max-width: 400px) {
+
+    .payment__inner {
+        align-items: flex-start;
+    }
+
+    .amount__panda {
+        justify-content: stretch;
+        margin-bottom: 5px;
+    }
 }
