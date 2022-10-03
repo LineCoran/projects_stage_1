@@ -44,7 +44,8 @@ ul {
 }
 
 .container {
-    width: 1600px;
+    max-width: 1600px;
+    min-width: none;
     margin: 0 auto;
     overflow-x: hidden;
 }
@@ -52,6 +53,7 @@ ul {
 header {
     background-color: black;
     margin-bottom: 386px;
+    transition: 1s linear;
 }
 
 .wrapper {
@@ -151,6 +153,19 @@ header {
     color: var(--orange);
 }
 
+.burger {
+    display: none;
+    height: 10px;
+    width: 18px;
+}
+
+.burger__item {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
 /* _____________HEADER END ________________ */
 
 /* _____________MAIN START ________________ */
@@ -159,6 +174,7 @@ header {
     width: 100%;
     height: 100%;
     background: url(../../assets/images/panda-big.jpg) center center / cover no-repeat;
+    transition: 0.3s linear;
 }
 
 .main__inner {
@@ -1157,6 +1173,8 @@ input::-webkit-slider-thumb:hover {
     color: var(--green);
 }
 
+
+
 .social__icon {
     display: flex;
     align-items: center;
@@ -1201,6 +1219,15 @@ input::-webkit-slider-thumb:hover {
     margin-top: 10px;
 }
 
+#navwidth320px {
+    display: none;
+}
+
+.social__list-active360px {
+    display: none;
+}
+
+
 @media(max-width: 1240px) {
 
     header {
@@ -1219,6 +1246,14 @@ input::-webkit-slider-thumb:hover {
         padding: 13px 0;
     }
 
+    .header__wrapper {
+        margin-top: 80px;
+        width: 160%;
+        height: 390px;
+        background: url(../../assets/images/panda-big.jpg) -173px center / cover no-repeat;
+    }
+    
+
     .header__nav-header {
         margin-left: 7%;
     }
@@ -1226,205 +1261,65 @@ input::-webkit-slider-thumb:hover {
         margin-right: 48px;
     }
 
-    .main {
-        padding-top: 80px;
-    }
-
-    .main__inner {
-        padding-right: 6%;
-    }
-
-    .main__title {
-        margin-top: 43px;
-        /* margin-right: 6%; */
-    }
-
-    .lined-text__word {
-        font-size: 5.3125rem;
-        line-height: 4rem;
-    }
-
-    .lined-text::after {
-        height: 367px;
-        width: 367px;
-        top: -54px;
-        right: 91px;
-        z-index: 1;
-    }
-
-    .main__button {
-        margin-right: 5.7%;
-    }
-
-    .main__button .button {
-        margin: 40px 0 47px 0;
-    }
-
-
-    .world {
-        margin-top: 109px;
-        margin-bottom: 142px;
-    }
-
-
-    .world__image {
-        min-width:auto;
-        width: 48.38%;
-        margin-right: 3%;
-        height: 409px;
-        background-size: cover;
-    }
-
-    .world__info {
-        width: 48.29%;
-    }
-
-    .world__text {
-        margin-right: 0;
-    }
-
-    .world__info-pic {
+    #first {
         display: none;
     }
 
-    .info__title {
-        margin-top: -9px;
-        line-height: 3.6rem;
+
+
+    .pick {
+        padding: 40px 0 30px 0;
     }
 
-    .animals__cards {
-        row-gap: 92px;
-        column-gap: 29px;
-    }
-
-    .animal__card {
-        width: 31.27%;
-        /* margin-right: 29px;
-        margin-bottom: 92px; */
-    }
-
-    .animal__card-photo {
-        height: 294px;
-    }
-
-    .card-photo {
+    .payment__description {
         width: 100%;
-        height: 100%;
-    }
-
-    .animal__card__footer {
-        padding: 8px 10px 12px 16px
-    }
-
-    .animals__button-left {
-        left: 385px;
-    } 
-    .animals__button-right {
-        right: 384px;
-    }
-
-    .button-animals {
-        margin: 80px 0 140px 0 ;
-    }
-
-    .animals__image-palma {
-        width: 19.4%;
-        background: url(../../assets/images/palm_foto_1000px.jpg) center bottom / contain no-repeat;
-    }
-
-    .animals__image-strelitsia {
-        width: 24.1%;
-        min-height: 180px;
-    }
-
-
-    .payment {
-        padding-top: 30px;
-        padding-bottom: 50px;
+        text-align: center;
     }
 
     .description__title {
-        margin-top: 30px;
-        margin-bottom: 20px;
+        margin: 0;
+        margin-top: 18px;
+        margin-bottom: 10px;
+        margin-right: 13px;
     }
 
-    .payment__subtitle {
-        margin-bottom: 20px;
-    }
-
-    .description__text {
-        margin-left: 5.21%;
-    }
-
-    .payment__text {
-        margin-right: 9%;
-    }
-
-    .payment__text-pp-1600px {
-        max-width: none;
-    }
-    .payment-process {
-        width: 100%;
-        margin-top: 40px;
-    }
-
-    .process__title {
-        margin-bottom: 42px;
-    }
-
-    .payment__steps {
-        justify-content: space-around
-    } 
-
-    .payment__step {
-        margin-right: -46px;
-    }
-
-    .payment__step:last-child{
-        margin-right: 0;
-    }
-
-    .payment__button {
-        margin: 71px 0 50px 0;
-        width: 298px;
-    }
-
-
-    .testi__inner {
-        margin-top: 100px;
-    }
-
-    .testi__title {
+    .pick__header__title {
+        max-width: 88%;
         margin-bottom: 30px;
-
     }
 
-    .review__item {
-        min-width: 294px;
-        height: 391px;
+    .pick__header__text {
+        max-width: 99%;
+        font-weight: 500;
+        margin-bottom: 50px;
+        line-height: 1.35rem;
+        letter-spacing: normal;
+    }
+
+    .pick__header__subtitle {
+        margin-bottom: 40px;
+    }
+
+    .payment-button__wrapper-text {
+        margin-bottom: 46px;
+    }
+
+    .feed-name {
+        width: 86.137%;
     } 
 
-    .review__item__inner {
-        padding: 11px 15px 19px 16px;
+    .feed {
+        width: 86.137%;
+        padding: 0 10px;
     }
 
-    .testi__bar {
-        margin-top: 20px;
-        margin-bottom: 52px;
+    .feed__label__count {
+        left: 4px;
     }
+    
 
-    input::-webkit-slider-thumb {
-        width: 24%;
-    }
 
-    .testi__button {
-        margin: 0 0 140px 0;
-    }
 
-    .testi__image {
-        width: 20%;
-        bottom: -90px;
-    }
     .footer__button {
         margin: 0 0 44px 0;
     } 
@@ -1439,13 +1334,17 @@ input::-webkit-slider-thumb:hover {
     }
 
     .header__nav-footer {
-        margin-left: 142px;
+        margin-left: 167px;
+        justify-content: stretch;
     }
 
     .header__nav-footer .nav__list .nav__list__item .nav__list__item__link {
         margin-right: 49px;
     }
 
+    .social__item {
+        margin-bottom: 11px;
+    }
 
 
 }
@@ -1454,6 +1353,14 @@ input::-webkit-slider-thumb:hover {
 
     .wrapper {
         width: 93.75%;
+    }
+
+    
+    .header__wrapper {
+        margin-top: 34px;
+        width: 214.5%;
+        height: 335px;
+        background: url(../../assets/images/panda-big.jpg) -273px center / cover no-repeat;
     }
 
     header {
@@ -1489,6 +1396,7 @@ input::-webkit-slider-thumb:hover {
         display: none;
     }
 
+
     .header__inner {
         justify-content: space-between;
         padding: 0;
@@ -1501,261 +1409,113 @@ input::-webkit-slider-thumb:hover {
     }
 
 
-    .lined-text__word {
-        font-size: 3.4rem;
-        line-height: 2.55rem;
+
+
+
+    .pick {
+        padding: 30px 0 46px 0;
     }
 
-    .lined-text::after {
-        height: 237.6px;
-        width: 237.6px;
-        top: -36px;
-        right: 53px
-    }
-
-    .main__title {
-        margin-top: 0;
-        padding: 0;
-    }
-
-    .main__button {
-        display: inline-block;
-    }
-
-    .main__button .button {
-        margin: -5px 0 40px 0;
-    }
-
-
-    .world {
-        margin-top: 60px;
-        margin-bottom: 49px;
-    }
-
-
-    .world__image {
-        display: none;
-    }
-
-    .world__info {
+    .pick__header__title {
+        font-size: 1.5rem;
+        line-height: 1.8rem;
         width: 100%;
-    } 
-
-    .world__text {
-        width: 81%;
-    }
-
-    .info__title {
-        margin: 0;
-        margin-left: 5px;
+        max-width: none;
         margin-bottom: 20px;
     }
 
-    .info__text {
-        margin-bottom: 30px;
-    }
-
-    .info__subtitle {
-        margin-bottom: 20px;
-    }
-
-    .world__info-pic {
-        display: block;
-        width: 36%;
-        height: 476px;
-        transform: translate(102px, -55%);
-        /* transform: translate(50%); */
-    }
-
-
-
-    .animals__cards {
-        justify-content: center;
-        row-gap: 92px;
-        column-gap: 30px;
-    }
-
-    .animal__card {
-        width: 47.5%;
-        margin: 0;
-    }
-
-    .animal__card-photo {
-        height: 284px;
-    }
-
-    .animal__card-none {
-        display: none;
-    }
-
-    .animal__card__footer {
-        padding: 6.24px 9.11px 8px 12.47px;
-    }
-
-    .animal__card-name {
-        font-size: 0.779rem;
-        line-height: 1.09rem;
-    }
-
-    .animal__card-country {
-        font-size: 0.73rem;
-        line-height: 0.876rem;
-    }
-
-    .animals__button-left {
-        left: 285px;
-        transform: translate(-100%, -57%);
-    }
-    
-    .animals__button-right {
-        right: 285px;
-        transform: translate(100%, -57%);
-    }
-
-    .animal__card-icon-meat {
-        width: 37.41px;
-        height: 29.62px;
-    }
-    .animal__card-icon-banana {
-        width: 25.72px;
-        height: 28.84px;
-    }
-
-    .button-animals {
-        margin: 60px 0 100px 0;
-    }
-
-    .animals__image-palma {
-        width: 29.93%;
-        min-height: 202px;
-        left: -59px;
-    }
-    
-    .animals__image-strelitsia {
-        min-width: 27.34%;
-        min-height: 131px;
-    }
-
-
-    .payment {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .wrapper-fullWidth {
+    .pick__header__text {
+        max-width: none;
         width: 100%;
-    }
-
-    .payment__inner {
-        padding: 0 20px;
+        margin-bottom: 34px;
     }
 
     .description__title {
-        margin-top: 10px;
-        font-size: 2.625rem;
-        line-height: 3.15rem;
-    }
-
-    
-    .description__text {
-        margin-left: 0;
+        margin-right: 0px;
+        margin-top: 27px;
+        margin-bottom: 21px;
     }
 
     .payment__subtitle {
-        font-size: 1.375rem;
-        line-height: 1.65rem;
+        margin-bottom: 52px;
     }
 
-    .payment__text {
-        margin-right: 0;
+    .amount__panda {
+        margin-bottom: 35px;
     }
 
-    .payment-process {
-        margin-top: 30px;
+    .feed-name {
+        width: 96.5%;
     }
 
-    .process__title {
-        margin-bottom: 20px;
+    .feed__inner-name {
+        margin-bottom: 8px;
     }
 
-    .payment__steps {
-        justify-content: stretch;
+    .feed {
+        height: 27px;
+        padding: 0 35px;
     }
 
-    .payment__step {
-        margin-right: 42px;
+    .pick__header__subtitle {
+        margin-bottom: 30px;
     }
 
-    .payment__step--arrow::after {
-        width: 90px;
-        top: -2px;
-        right: -13px;
-        transform: translate(50%, -50%);
-        background: url(../../assets/icons/arrow-width_640px.svg) center center/ contain no-repeat;
-        z-index: 10;
+    .payment-button__wrapper-text {
+        margin-bottom: 46px;
     }
 
-    .payment__button {
-        margin: 43px 0 60px 0;
+    .feed {
+        width: 100%;
     }
 
-
-
-
-    .testi__inner {
-        margin-top: 60px;
-    }
-
-    
-    .review__item-hidden {
+    #second {
         display: none;
     }
 
-    .review__list {
-        overflow-y: hidden;
-        flex-direction: column;
+    #third {
+        display: none;
     }
 
-    .review__item {
-        margin: 0;
-        min-width: 100%;
-        height: auto;
-        min-height: 109px;
-        margin-bottom: 15px;
-        padding: 2px;
+    .money__input__wrapper {
+        min-width: min-content;
+        padding: 10px 11px 11px 6px;
+        justify-content: stretch;
     }
 
-    .review__item__inner {
-        padding: 11px 15px 7px 10px;
+    .pick__money {
+        width: 154px;
     }
 
-    .review__item--content {
-        margin-left: 5px;
+    .feed__label__count {
+        left: -4px;
     }
+
+    .payment-button__wrapper {
+        margin-top: 98px;
+    }
+    .money__input__wrapper {
+        padding: 7px 11px 8px 6px;
+    }
+
+    .label__list {
+        margin-top: 31px;
+        margin-bottom: 32px;
+    }
+
+    .payment-button__wrapper-text {
+        margin-bottom: 32px;
+    }
+
     
-    /* .review__item:nth-child(2) .review__item__inner  {
-        padding: 1px 10px 7px 10px;
-    } */
+    
 
-    .review__item:nth-child(3) {
-        margin-bottom: 0;
-    }
 
-    .review__item--text {
-        -webkit-line-clamp: 6;
-    }
 
-    .testi__button {
-        display: block;
-        margin: 40px auto 80px auto;
-        padding: 16px 55px;
-    } 
 
-    .testi__image {
-        width: 19.43%;
-        bottom: -70px;
-        right: -7px;
-    }
+
+
+
 
 
 
@@ -1805,27 +1565,26 @@ input::-webkit-slider-thumb:hover {
     }
 
     .footer__info {
-        padding-bottom: 12px;
+        padding-bottom: 13px;
     }
 
     .footer__button {
         margin: 0 0 67px 0;
     }
 
-
-
-
-}
-
-@media(max-width: 768px) {
-    .review__item--text {
-        -webkit-line-clamp: 2;
+    .design-text {
+        margin-bottom: 0;
     }
 
-    .testi__bar {
-        display: none;
-    } 
+    .design-text-top {
+        margin-bottom: 10px;
+    }
+    
+
+
+
 }
+
 
 @media(max-width: 639px) {
 
@@ -1835,213 +1594,167 @@ input::-webkit-slider-thumb:hover {
         margin-top: 34.45px;
     }
 
+    .header__wrapper {
+        margin-top: 34px;
+        width: 239.5%;
+        height: 187px;
+        background: url(../../assets/images/panda-big.jpg) -149px center / cover no-repeat;
+    }
+
     .wrapper {
         width: 93.75%;
+    }
+
+    .pick {
+        padding: 30px 0 20px 0;
     }
 
     .main__inner {
         padding: 0 4px 43.39px 0;
     }
 
-    .lined-text__word {
-        font-size: 1.7rem;
-        line-height: 1.275rem;
+
+    .pick__header__subtitle {
+        font-size: 1.5rem;
+        line-height: 1.8rem;
     }
 
-    .lined-text::after {
-        width: 119px;
-        height: 119px;
-        top: -20px;
-        right: 24px;
-    }
-
-    .main__button {
-        display: none;
-    }
-
-    #main__button-width320px {
-        display: block;
-        margin: 0;
-        text-align: center;
-    }
-
-    .main__button .button {
-        margin: 0;
-        margin-top: 20px;
+    .pick__header__text {
+        line-height: 1.38rem;
         margin-bottom: 30px;
     }
 
-    .world {
-        margin-top: 0;
-        margin-bottom: 20px;
-    } 
-
-    .world__text {
-        width: 100%;
-    }
-
-    .info__title {
-        margin-left: 0;
-        font-size: 1.5rem;
-        line-height: 1.8rem;
-        margin-bottom: 10px;
-    }
-
-    .info__text {
-        margin-bottom: 20px;
-    }
-
-    .info__subtitle {
-        margin-bottom: 10px;
-    } 
-
-    .info__text-second {
-        line-height: 1.38rem;
-    }
-
-    .world__info-pic {
-        width: 32.81%;
-        height: 217px;
-        transform: none;
-        top: -66px;
-        right: -73px;
-        z-index: -1;
-    }
-
-
-    .animals__cards {
-        justify-content: center;
-        row-gap: 20px;
-    }
-
-    .animal__card__footer {
-        padding: 6.24px 9.11px 9px 11.47px;
-    }
-
-    .animals__button {
-        display: none;
-    }
-
-    .button-animals {
-        margin: 18px 0 60px 0;
-    }
-
-    .animals__image-palma {
-        width: 21.4%;
-        min-height: 202px;
-        left: -11px;
-    }
-
-    .animals__image-strelitsia {
-        right: -18px;
-    }
-
-
-
-    
-
-    .payment__text {
-        display: none;
-    }
-
     .payment__inner {
-        padding: 0;
+        align-items: flex-start;
     }
     .description__title {
         font-size: 1.5rem;
         line-height: 1.8rem;
-        margin-bottom: 10px;
         margin-top: 20px;
+        margin-bottom: 9px;
+    }
+    .payment__subtitle {
+        font-size: 1rem;
+        line-height: 1.4rem;
+        margin-bottom: 10px;
     }
 
-    .description__text {
-        text-align: center;
+    .amount__panda {
+        justify-content: stretch;
+        margin-bottom: 5px;
+    }
+
+    .counts-of-pands {
+        padding-top: 36px;
+        padding-right: 0;
+        margin-right: 21px;
+    }
+    .amount_panda__num {
+        font-size: 2.5375rem;
+        line-height: 2.03rem;
+        margin-bottom: 7px;
+    }
+
+    .amount_panda__text {
+        font-size: 0.56375rem;
+        line-height: 0.789rem;
+    }
+
+    .cross__icon {
+        margin: 0;
+        margin-right: 21px;
+        width: 8px;
+        height: 8px;
+        padding-bottom: 30px;
+    }
+
+    .cross__icon-svg {
+        width: 8px;
+        height: 8px;
+    }
+
+    .panda__image {
+        width: 53.38%;
+        height: 138px;
+        transform: none;
+    }
+
+    .panda__icon {
         width: 100%;
     }
 
-    .payment__subtitle {
-        font-size: 1.125rem;
-        line-height: 1.35rem;
-        margin-bottom: 0;
+    .feed__inner-name {
+        font-size: 1rem;
+        line-height: 1.4rem;
     }
 
-    .payment-process {
-        margin-top: 20px;
+    #third {
+        display: none;
     }
 
-    .process__title {
-        font-size: 1.5rem;
-        line-height: 1.8rem;
+    .feed {
+        height: 12px;
+        padding: 0px 19px 0 21px;
     }
 
-    .payment__steps {
-        flex-direction: column;
-        align-items: center;
-        row-gap: 41.61px ;
-    } 
-
-    .payment__step {
-        margin-right: 0;
+    .feed__label__list {
+        width: calc(100% + 20px);
+        top: -9px;
+        left: -11px;
+    }
+    .feed__label__item-label {
+        height: 20px;
+        width: 20px;
     }
 
-    .payment__step-text-320px {
-        margin-bottom: -14px;
+    .feed__label__count {
+        font-size: 0.8125rem;
+        line-height: 1.1375rem;
+        top: 23px;
+        left: -3px;
     }
 
-
-    .payment__step-image {
-        margin-bottom: 10px;
+    .money__label__count {
+        font-size: 0.8125rem;
+        line-height: 1.1375rem;
     }
 
-    .payment__step--arrow::after {
-        transform: rotate(84deg);
-        top: 193px;
-        right: -62px;
+    .feed__circle__inner {
+        height: 4px;
+        width: 4px;
     }
 
-    .payment__step--arrow-width320px::after {
-        top: 187px;
-        right: -62px;
+    .feed__second__circle {
+        height: 11px;
+        width: 11px;
+    }
+
+    .label__list {
+        margin-top: 27px;
+        width: 215px;
+        margin-bottom: 29px;
     }
 
     .payment__button {
-        margin-top: 38px;
-        margin-bottom: 40px;
+        width: 300px;
+        margin-bottom: 30px;
+    }
+
+    .payment-button__wrapper {
+        margin-top: 50px;
     }
 
 
 
-    .testi__inner {
-        margin-top: 30px;
-    }
-
-    .testi__title {
-        font-size: 1.5rem;
-        line-height: 1.8rem;
+    .payment-button__wrapper-text {
+        width: max-content;
+        font-size: 1rem;
+        line-height: 1.4rem;
+        text-align: center;
         margin-bottom: 20px;
     }
 
-    .review__item {
-        padding: 2px;
-    }
 
-    .review__item__inner {
-        padding: 8px 10px 12px 12px
-    }
-
-    .review__item--icon {
-        margin-right: 5px;
-    }
-    .testi__button {
-        margin: 30px auto 60px auto;
-    }
-
-    .testi__image {
-        width: 20.43%;
-        bottom: -44px;
-        right: -10px;
-        transform: rotate(344deg);
-    }
 
     .footer__cap {
         justify-content: center;

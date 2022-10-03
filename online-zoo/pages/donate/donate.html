@@ -22,10 +22,10 @@
                 <div class="wrapper">
 
                     <div class="header__inner">
-                        <a href="../main/index.html" class="header__logo">
+                        <a href="../main/index.html" class="header__logo header__logo-width999px">
                             <h1 class="logo__title">PetStory online</h1>
                         </a>
-                        <nav class="header__nav">
+                        <nav class="header__nav header__nav-header">
                             <ul class="nav__list">
                                 <li class="nav__list__item">
                                     <a href="../main/index.html" class="nav__list__item__link">About</a>
@@ -50,7 +50,11 @@
                                     target="_blank" class="designed__link">Designed by &copy;</a>
                             </div>
                         </nav>
-
+                        <div class="burger">
+                            <div class="burger__item"></div>
+                            <div class="burger__item"></div>
+                            <div class="burger__item"></div>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -117,17 +121,17 @@
 
                         </div>
 
-<div class="feed-name">
-    <p class="feed__inner-name">
-        Amount
-    </p>
-</div>
+                        <div class="feed-name">
+                            <p class="feed__inner-name">
+                                Amount
+                            </p>
+                        </div>
                         <div class="feed">
                             <div class="feed__inner">
                                 
                                 <div class="feed__label__list">
                                     <input type="radio" id="5000" name="feed" class="feed__label__item">
-                                    <label for="5000" class="feed__label__item-label">
+                                    <label for="5000" class="feed__label__item-label" id="first">
                                         <div class="feed__second__circle">
                                             <div class="feed__circle__inner"></div>
                                         </div>
@@ -140,7 +144,7 @@
 
                                     
                                     <input type="radio" id="2000" name="feed" class="feed__label__item">
-                                    <label for="2000" class="feed__label__item-label">
+                                    <label for="2000" class="feed__label__item-label" id="second">
                                         <div class="feed__second__circle">
                                             <div class="feed__circle__inner"></div>
                                         </div>
@@ -153,7 +157,7 @@
 
 
                                     <input type="radio" id="1000" name="feed" class="feed__label__item">
-                                    <label for="1000" class="feed__label__item-label">
+                                    <label for="1000" class="feed__label__item-label" id="third">
                                         <div class="feed__second__circle">
                                             <div class="feed__circle__inner"></div>
                                         </div>
@@ -262,7 +266,7 @@
                             </a>
 
                             <p class="payment-button__wrapper-text">
-                                Share with your frineds on social networks
+                                Share with your friends on social networks
                             </p>
                         </div>
                     </div>
@@ -275,8 +279,8 @@
             <div class="wrapper">
                 <div class="footer__inner">
                     <div class="footer__cap">
-                        <a href="./index.html" class="header__logo">
-                            <p class="logo__title">PetStory online</p>
+                        <a href="./index.html" class="header__logo header__logo-footer">
+                            <p class="logo__title logo__title-footer">PetStory online</p>
                         </a>
                         <div class="subscribe">
                             <h3 class="subscribe__title">
@@ -288,6 +292,48 @@
                             </div>
                         </div>
                     </div>
+
+                    <ul class="social__list social__list-active360px">
+                        <li class="social__item">
+                            <a href="https://www.facebook.com/" target="_blank" class="social__item-link">
+                                <div class="social__icon">
+                                    <img src="../../assets/icons/facebook.svg" alt="facebook-svg"
+                                        class="social__icon-svg">
+                                </div>
+                                <p class="social__name">Facebook</p>
+                            </a>
+                        </li>
+
+                        <li class="social__item">
+                            <a href="https://www.twitter.com/" target="_blank" class="social__item-link">
+                                <div class="social__icon">
+                                    <img src="../../assets/icons/twitter.svg" alt="twitter-svg"
+                                        class="social__icon-svg">
+                                </div>
+                                <p class="social__name">Twitter</p>
+                            </a>
+                        </li>
+
+                        <li class="social__item">
+                            <a href="https://www.instagram.com/" target="_blank" class="social__item-link">
+                                <div class="social__icon">
+                                    <img src="../../assets/icons/instagram.svg" alt="instagran-svg"
+                                        class="social__icon-svg">
+                                </div>
+                                <p class="social__name">Instagram</p>
+                            </a>
+                        </li>
+
+                        <li class="social__item">
+                            <a href="https://www.youtube.com/" target="_blank" class="social__item-link">
+                                <div class="social__icon">
+                                    <img src="../../assets/icons/youtube.svg" alt="youtube-svg"
+                                        class="social__icon-svg">
+                                </div>
+                                <p class="social__name">YouTube</p>
+                            </a>
+                        </li>
+                    </ul>
                     <a href="../donate/donate.html" target="_blank" class="footer__button-link">
                         <button class="button footer__button">donate for volunteers</button>
                     </a>
@@ -333,7 +379,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <nav class="header__nav header__nav-footer">
+                        <nav class="header__nav header__nav-footer" id="footer_nav">
                             <ul class="nav__list">
                                 <li class="nav__list__item nav__list__item-active">
                                     <a href="#" class="nav__list__item__link ">About</a>
@@ -353,9 +399,28 @@
                         </nav>
 
                         <div class="footer__disign-info">
-                            <p class="design-text">Designed by Alisa Samborskaya</p>
+                            <p class="design-text design-text-top">Designed by Alisa Samborskaya</p>
                             <p class="design-text">&copy;RSSchool & &copy;Yem Digital 2021</p>
                         </div>
+
+                        <nav class="header__nav header__nav-footer header__nav-footer-width320px" id="navwidth320px">
+                            <ul class="nav__list">
+                                <li class="nav__list__item nav__list__item-active">
+                                    <a href="#" class="nav__list__item__link ">About</a>
+                                </li>
+
+                                <li class="nav__list__item">
+                                    <a href="#" class="nav__list__item__link">Map</a>
+                                </li>
+
+                                <li class="nav__list__item">
+                                    <a href="#" class="nav__list__item__link">Zoos</a>
+                                </li>
+                                <li class="nav__list__item">
+                                    <a href="#" class="nav__list__item__link">Contact us</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
