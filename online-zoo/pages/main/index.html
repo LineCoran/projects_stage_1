@@ -10,15 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
-
-
+    <link rel="stylesheet" href="popup.css">
     <title>Online-zoo</title>
 </head>
 
-<body style="overflow-x: hidden;">
+<body>
     <div class="container">
+        <div class="body__wrapper" id="body__wrapper"></div>
         <div class="header__wrapper">
-            <header>
+            <header class="header">
                 <div class="wrapper">
                     <div class="header__inner">
                         <a href="./index.html" class="header__logo header__logo-width999px">
@@ -49,11 +49,12 @@
                                     target="_blank" class="designed__link">Designed by &copy;</a>
                             </div>
                         </nav>
-                        <div class="burger">
+                        <div class="burger" id="button">
                             <div class="burger__item"></div>
                             <div class="burger__item"></div>
                             <div class="burger__item"></div>
                         </div>
+
                     </div>
                 </div>
             </header>
@@ -77,6 +78,44 @@
                     </div>
                 </div>
             </main>
+
+            <div class="popup" id="popup">
+                <div class="popup__inner">
+                    <a href="./index.html" class="header__logo popup__item">
+                        <h1 class="logo__title">PetStory online</h1>
+                    </a>
+            
+            
+                    <nav class="header__nav">
+                        <ul class="nav__list">
+                            <li class="nav__list__item popup__item">
+                                <a href="./index.html" class="nav__list__item__link">About</a>
+                            </li>
+            
+                            <li class="nav__list__item popup__item">
+                                <a href="#" class="nav__list__item__link">Map</a>
+                            </li>
+            
+                            <li class="nav__list__item popup__item">
+                                <a href="#" class="nav__list__item__link">Zoos</a>
+                            </li>
+                            <li class="nav__list__item popup__item">
+                                <a href="../donate/donate.html" class="nav__list__item__link">Donate</a>
+                            </li>
+                            <li class="nav__list__item popup__item">
+                                <a href="#" class="nav__list__item__link">Contact us</a>
+                            </li>
+                        </ul>
+            
+                        <div class="header__designed popup__item">
+                            <a href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online" target="_blank"
+                                class="designed__link">Designed by &copy;</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            
         </div>
         <div class="main__button main__button-width320px-active" id="main__button-width320px">
             <button class="button button__main">
@@ -116,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="world__info-pic">
 
@@ -725,7 +764,12 @@
             </div>
         </footer>
 
+        
+
     </div>
+
 </body>
+
+<script src="./popup.js"></script>
 
 </html>

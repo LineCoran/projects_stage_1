@@ -15,6 +15,12 @@ body {
     overflow-x: hidden;
 }
 
+
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
@@ -47,6 +53,22 @@ ul {
     overflow-x: hidden;
 }
 
+.body__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 500;
+    display: none;
+}
+
+.body__wrapper-active {
+    display: block;
+}
+
 header {
     background-color: black;
 }
@@ -57,6 +79,7 @@ header {
 }
 
 .header__inner {
+    position: relative;
     display: flex;
     padding: 14px 0;
     align-items: center;
@@ -166,6 +189,7 @@ header {
 /* _____________MAIN START ________________ */
 
 .header__wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
     background: url(../../assets/images/panda-big.jpg) center center / cover no-repeat;
