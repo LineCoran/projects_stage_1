@@ -411,20 +411,36 @@ header {
 }
 
 .animals__inner {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+
+.animal__slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.animals__slider__list {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    transition: 0.4s ease-out;
 }
 
 .animals__cards {
-    position: relative;
+    /* position: relative; */
     width: 100%;
+    min-width: 1160px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 25px;
     column-gap: 30px;
+    
 }
 
 .animal__card {
@@ -523,13 +539,13 @@ header {
 }
 
 .animals__button-left {
-    top: 50%;
+    top: 39%;
     left: -20px;
     transform: translate(-100%, -50%);
 }
 
 .animals__button-right {
-    top: 50%;
+    top: 39%;
     right: -20px;
     transform: translate(100%, -50%);
 }
