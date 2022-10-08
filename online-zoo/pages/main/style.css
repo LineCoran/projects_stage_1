@@ -755,17 +755,22 @@ header {
     margin-bottom: 47px;
 }
 
+.review__list-slider {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .review__list {
     width: 100%;
     display: flex;
-    overflow-x: hidden;
-    /* justify-content: space-between; */
+    column-gap: 29px;
+    transition: 0.5s linear;
 }
 
 .review__item {
     max-width: 268px;
     min-width: 268px;
-    margin-right: 29px;
+    /* margin-right: 29px; */
     height: 392px;
     display: flex;
     flex-direction: column;
