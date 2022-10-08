@@ -421,20 +421,25 @@ header {
 
 .animal__slider {
     width: 100%;
+    position: relative;
+    height: 1000px;
     overflow: hidden;
 }
 
 .animals__slider__list {
     width: 100%;
     display: flex;
-    justify-content: left;
-    transition: 0.4s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* justify-content: left; */
+    transition: transform 0.4s ease-out;
 }
 
 .animals__cards {
     /* position: relative; */
     width: 100%;
-    min-width: 1160px;
+    min-width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -539,13 +544,13 @@ header {
 }
 
 .animals__button-left {
-    top: 39%;
+    top: 35%;
     left: -20px;
     transform: translate(-100%, -50%);
 }
 
 .animals__button-right {
-    top: 39%;
+    top: 35%;
     right: -20px;
     transform: translate(100%, -50%);
 }
@@ -1157,9 +1162,11 @@ input::-webkit-slider-thumb:hover {
     }
 
     .animals__button-left {
+        top: 31.5%;
         left: 385px;
     } 
     .animals__button-right {
+        top: 31.5%;
         right: 384px;
     }
 

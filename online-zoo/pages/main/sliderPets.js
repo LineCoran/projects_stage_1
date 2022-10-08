@@ -5,36 +5,34 @@ const rightButton = document.getElementById('petsRight')
 const cardsList = document.getElementById('cardsList');
 const sliderList = document.getElementById('sliderList');
 let currentPosition = 0;
+let currentTranslatePosition = 0;
 leftButton.addEventListener('click', showLeftSlide);
 rightButton.addEventListener('click', showRightSlide);
 
 
 function showLeftSlide() {
     leftButton.removeEventListener('click', showLeftSlide);
+    currentTranslatePosition+=parseFloat(getComputedStyle(sliderList).width);
     sliderList.prepend(createCardList());
-    sliderList.style.transition = 'none';
     currentPosition -= parseFloat(getComputedStyle(sliderList).width);
-    sliderList.style.transform = `translateX(${currentPosition}px)`
+    sliderList.style.left = `${currentPosition}px`;
+    sliderList.style.transform = `translateX(${currentTranslatePosition}px)`;
     setTimeout(function(){
-        sliderList.style.transition = '0.4s ease-out'
-    currentPosition += parseFloat(getComputedStyle(sliderList).width);
-    sliderList.style.transform = `translateX(${currentPosition}px)`
-    }, 100)
-
-    setTimeout(function(){
-        leftButton.addEventListener('click', showLeftSlide)
+        leftButton.addEventListener('click', showLeftSlide);
+        sliderList.lastElementChild.remove();
     }, 500)
-    
 }
 
 function showRightSlide(){
     rightButton.removeEventListener('click', showRightSlide);
-    currentPosition -= parseFloat(getComputedStyle(sliderList).width);
     sliderList.append(createCardList());
-    sliderList.style.transform = `translateX(${currentPosition}px)`;
-
+    currentTranslatePosition -= parseFloat(getComputedStyle(sliderList).width);
+    sliderList.style.transform = `translateX(${currentTranslatePosition}px)`;
+    currentPosition += parseFloat(getComputedStyle(sliderList).width);
     setTimeout(function(){
         rightButton.addEventListener('click', showRightSlide)
+        sliderList.style.left = `${currentPosition}px`;
+        sliderList.firstElementChild.remove();
     }, 500)
 }
 
@@ -46,28 +44,30 @@ function createCardList(){
     let petsList = [... pets];
 
     let newCardsList = document.createElement('div')
-    newCardsList.classList.add('animals__cards');
-
-    let newSlide = document.createElement('div')
-    
-
+    newCardsList.classList.add('animals__cards');    
     function makeRandomArr(a, b) {
         return Math.random() - 0.5;
       }
       
     let shuffleArr = [... petsList.sort(makeRandomArr)];   
-
+    
+    let number = 1;
     for (let i = 0; i<countOfCards; i++) {
-        newCardsList.append(createCard(shuffleArr[i]))
+        newCardsList.append(createCard(shuffleArr[i], number))
+        number++
     }
 
     return newCardsList
 }
 
-function createCard(cardValues) {
+function createCard(cardValues, numberOfSlide) {
     // обёртка
     let animalCard = document.createElement('div');
     animalCard.classList.add('animal__card');
+
+    if(numberOfSlide > 4) {
+        animalCard.classList.add('animal__card-none');
+    }
 
     // фотка
 
@@ -114,5 +114,3 @@ function createCard(cardValues) {
 
     return animalCard;
 }
-
-// createCardList()
