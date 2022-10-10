@@ -15,6 +15,12 @@ body {
     overflow-x: hidden;
 }
 
+
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
@@ -42,9 +48,27 @@ ul {
 
 .container {
     max-width: 1600px;
-    min-width: none;
     margin: 0 auto;
     overflow-x: hidden;
+    position: relative;
+
+}
+
+.body__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.4s linear;
+}
+
+.body__wrapper-active {
+    opacity: 0.6;
+    z-index: 500;
 }
 
 header {
@@ -57,6 +81,7 @@ header {
 }
 
 .header__inner {
+    position: relative;
     display: flex;
     padding: 14px 0;
     align-items: center;
@@ -151,6 +176,7 @@ header {
     display: none;
     height: 10px;
     width: 18px;
+    transform: translateY(0);
 }
 
 .burger__item {
@@ -158,6 +184,36 @@ header {
     height: 2px;
     background-color: #fff;
     border-radius: 2px;
+    transition: 0.2s ease-out;
+}
+
+.burger .burger__item:first-child {
+    transform: rotate(0);
+}
+
+.burger .burger__item:nth-child(2) {
+    transform: rotate(0);
+}
+
+.burger .burger__item:last-child {
+    transform: rotate(0) ;
+}
+
+.burger-active {
+    transform: translateY(3px);
+    justify-content: center;
+}
+
+.burger-active .burger__item:first-child {
+    transform: rotate(45deg);
+}
+
+.burger-active .burger__item:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.burger-active .burger__item:last-child {
+    transform: rotate(-45deg);
 }
 
 
@@ -166,6 +222,7 @@ header {
 /* _____________MAIN START ________________ */
 
 .header__wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
     background: url(../../assets/images/panda-big.jpg) center center / cover no-repeat;
@@ -354,25 +411,46 @@ header {
 }
 
 .animals__inner {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+
+.animal__slider {
+    width: 100%;
+    position: relative;
+    height: 900px;
+    overflow: hidden;
+}
+
+.animals__slider__list {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* justify-content: left; */
+    transition: transform 0.4s ease-out;
 }
 
 .animals__cards {
-    position: relative;
+    /* position: relative; */
     width: 100%;
+    min-width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 25px;
     column-gap: 30px;
+    
 }
 
 .animal__card {
-    width: 31.55%;
-    min-width: 285px;
+    width: 30.55%;
+    min-width: 275px;
     /* max-width: 310px; */
     overflow: hidden;
     display: flex;
@@ -466,13 +544,13 @@ header {
 }
 
 .animals__button-left {
-    top: 50%;
+    top: 38%;
     left: -20px;
     transform: translate(-100%, -50%);
 }
 
 .animals__button-right {
-    top: 50%;
+    top: 38%;
     right: -20px;
     transform: translate(100%, -50%);
 }
@@ -677,17 +755,21 @@ header {
     margin-bottom: 47px;
 }
 
+.review__list-slider {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .review__list {
     width: 100%;
     display: flex;
-    overflow-x: hidden;
-    /* justify-content: space-between; */
+    column-gap: 29px;
+    transition: 0.5s linear;
 }
 
 .review__item {
     max-width: 268px;
     min-width: 268px;
-    margin-right: 29px;
     height: 392px;
     display: flex;
     flex-direction: column;
@@ -695,8 +777,13 @@ header {
     justify-content: center;
     padding: 4px 2px;
     border-radius: 20px;
-    background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%)
+    background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+.review__item {
+    cursor: pointer;
+} 
 
 .review__item__inner {
     height: 100%;
@@ -1059,6 +1146,10 @@ input::-webkit-slider-thumb:hover {
         line-height: 3.6rem;
     }
 
+    .animal__slider {
+        height: 820px;
+    }
+
     .animals__cards {
         row-gap: 92px;
         column-gap: 29px;
@@ -1084,10 +1175,14 @@ input::-webkit-slider-thumb:hover {
     }
 
     .animals__button-left {
+        top: 36.5%;
         left: 385px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     } 
     .animals__button-right {
+        top: 36.5%;
         right: 384px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 
     .button-animals {
@@ -1181,8 +1276,7 @@ input::-webkit-slider-thumb:hover {
     }
 
     input::-webkit-slider-thumb {
-        width: 15.5%;
-        margin-left: 40px;
+        width: 12.25%;
     }
 
     .testi__button {
@@ -1373,12 +1467,12 @@ input::-webkit-slider-thumb:hover {
 
     .animals__button-left {
         left: 285px;
-        transform: translate(-100%, -57%);
+        transform: translate(-100%, -45%);
     }
     
     .animals__button-right {
         right: 285px;
-        transform: translate(100%, -57%);
+        transform: translate(100%, -45%);
     }
 
     .animal__card-icon-meat {
@@ -1481,8 +1575,11 @@ input::-webkit-slider-thumb:hover {
     }
 
     .review__list {
-        overflow-y: hidden;
+        height: 357px;
         flex-direction: column;
+        row-gap: 15px;
+
+        overflow-y: hidden;
     }
 
     .review__item {
@@ -1490,7 +1587,6 @@ input::-webkit-slider-thumb:hover {
         min-width: 100%;
         height: auto;
         min-height: 109px;
-        margin-bottom: 15px;
         padding: 2px;
     }
 
@@ -1501,17 +1597,17 @@ input::-webkit-slider-thumb:hover {
     .review__item--content {
         margin-left: 5px;
     }
-    
-    /* .review__item:nth-child(2) .review__item__inner  {
-        padding: 1px 10px 7px 10px;
-    } */
 
     .review__item:nth-child(3) {
         margin-bottom: 0;
     }
 
     .review__item--text {
-        -webkit-line-clamp: 6;
+        -webkit-line-clamp: 2;
+    }
+
+    .testi__bar {
+        display: none;
     }
 
     .testi__button {
@@ -1677,6 +1773,10 @@ input::-webkit-slider-thumb:hover {
         top: -66px;
         right: -73px;
         z-index: -1;
+    }
+
+    .animal__slider {
+        height: 1420px;
     }
 
 
@@ -1900,4 +2000,65 @@ input::-webkit-slider-thumb:hover {
         width: 100%;
     }
     
+}
+
+
+
+.review__item-popup {
+    position: fixed;
+    height: max-content;
+    min-width: 50%; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.review__item-popup .review__item--text {
+    display: -webkit-box;
+    -webkit-line-clamp: 17;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: hidden;
+    font-size: 15px;
+    color: #767474;
+    font-weight: 300;
+    line-height: 1.125rem;
+}
+
+.review__item-popup .review__cross {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.review__item-popup .review__cross .cross__item {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    height: 3px;
+    margin-bottom: 10px;
+    background-color: #bdbdbd;
+}
+
+.cross__item:first-child{
+    transform: rotate(45deg);
+}
+
+.cross__item:last-child{
+    transform: rotate(-45deg);
+}
+
+.review__item-popup .review__cross:hover {
+    transform: scale(120%);
 }

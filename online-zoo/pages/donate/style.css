@@ -44,10 +44,28 @@ ul {
 }
 
 .container {
-    max-width: 1600px;
-    min-width: none;
+    max-width: 1600%;
+    width: 100%;
     margin: 0 auto;
     overflow-x: hidden;
+    position: relative;
+}
+
+.body__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.4s linear;
+}
+
+.body__wrapper-active {
+    opacity: 0.6;
+    z-index: 500;
 }
 
 header {
@@ -157,6 +175,7 @@ header {
     display: none;
     height: 10px;
     width: 18px;
+    transform: translateY(0);
 }
 
 .burger__item {
@@ -164,6 +183,36 @@ header {
     height: 2px;
     background-color: #fff;
     border-radius: 2px;
+    transition: 0.2s ease-out;
+}
+
+.burger .burger__item:first-child {
+    transform: rotate(0);
+}
+
+.burger .burger__item:nth-child(2) {
+    transform: rotate(0);
+}
+
+.burger .burger__item:last-child {
+    transform: rotate(0) ;
+}
+
+.burger-active {
+    transform: translateY(3px);
+    justify-content: center;
+}
+
+.burger-active .burger__item:first-child {
+    transform: rotate(45deg);
+}
+
+.burger-active .burger__item:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.burger-active .burger__item:last-child {
+    transform: rotate(-45deg);
 }
 
 /* _____________HEADER END ________________ */
@@ -171,6 +220,7 @@ header {
 /* _____________MAIN START ________________ */
 
 .header__wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
     background: url(../../assets/images/panda-big.jpg) center center / cover no-repeat;
@@ -1247,7 +1297,7 @@ input::-webkit-slider-thumb:hover {
     }
 
     .header__wrapper {
-        margin-top: 80px;
+        /* margin-top: 80px; */
         width: 160%;
         height: 390px;
         background: url(../../assets/images/panda-big.jpg) -173px center / cover no-repeat;

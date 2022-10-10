@@ -1,0 +1,82 @@
+.popup *{
+    margin: 0;
+    padding: 0;
+    display: block;
+    color: #333B41;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    background-color: #fff;
+    border-bottom-right-radius: 15px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: 0.5s ease-out;
+}
+
+.popup-active {
+    transform: translateX(0);
+}
+
+.popup__item {
+    transform: translateX(-1000px);
+    transition: ease-in-out 0.3s;
+}
+
+.popup__item-active {
+    transform: translateX(0);
+}
+
+.popup .logo__title {
+    font-size: 0.95rem;
+    line-height: 1.14rem;
+    color: #FE9013;
+    border: 1px solid #FE9013;
+    margin-bottom: 30px;
+    padding: 2.84px 3.8px;
+}
+
+.popup .header__logo {
+    border: none;
+}
+
+.popup .logo__title::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 16px;
+    background: url(../../assets/icons/bamboo-orange.svg) center center/ contain no-repeat;
+    width: 12px;
+    height: 21px;
+}
+
+.popup__inner {
+    padding: 10px 10px 40px 10px;
+}
+
+.popup .header__nav .nav__list .nav__list__item {
+    margin-bottom: 15px;
+}
+
+.burger-active {
+    position: relative;
+}
+
+.burger-active .burger__item {
+    position: absolute;
+}
+
+
+@media(max-width: 639px){
+    .popup {
+        min-height: 329px;
+        top: -35px;
+        width: 50vw;
+    }
+}
