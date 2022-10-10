@@ -274,8 +274,8 @@
                         <div class="payment-button__wrapper">
 
                             <div class="money__input__wrapper">
-                                <input type="number" placeholder="Another amount" min="1" max="9999" oninput="if(value.length > 4) value = value.slice (0,4)"
-                                    class="pick__money">
+                                <input type="number" value="100" placeholder="Another amount" min="1" max="9999" oninput="if(value.length > 4) value = value.slice (0,4)"
+                                    class="pick__money" id="inputMoney">
                                 <span>$</span>
                             </div>
 
@@ -467,5 +467,6 @@
 </body>
 
 <script src="./popup.js"></script>
+<script src="./input.js"></script>
 
 </html>

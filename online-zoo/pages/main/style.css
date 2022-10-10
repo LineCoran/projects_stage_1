@@ -422,7 +422,7 @@ header {
 .animal__slider {
     width: 100%;
     position: relative;
-    height: 1000px;
+    height: 900px;
     overflow: hidden;
 }
 
@@ -449,8 +449,8 @@ header {
 }
 
 .animal__card {
-    width: 31.55%;
-    min-width: 285px;
+    width: 30.55%;
+    min-width: 275px;
     /* max-width: 310px; */
     overflow: hidden;
     display: flex;
@@ -544,13 +544,13 @@ header {
 }
 
 .animals__button-left {
-    top: 35%;
+    top: 38%;
     left: -20px;
     transform: translate(-100%, -50%);
 }
 
 .animals__button-right {
-    top: 35%;
+    top: 38%;
     right: -20px;
     transform: translate(100%, -50%);
 }
@@ -777,7 +777,8 @@ header {
     justify-content: center;
     padding: 4px 2px;
     border-radius: 20px;
-    background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%)
+    background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .review__item {
@@ -1145,6 +1146,10 @@ input::-webkit-slider-thumb:hover {
         line-height: 3.6rem;
     }
 
+    .animal__slider {
+        height: 820px;
+    }
+
     .animals__cards {
         row-gap: 92px;
         column-gap: 29px;
@@ -1170,12 +1175,14 @@ input::-webkit-slider-thumb:hover {
     }
 
     .animals__button-left {
-        top: 31.5%;
+        top: 36.5%;
         left: 385px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     } 
     .animals__button-right {
-        top: 31.5%;
+        top: 36.5%;
         right: 384px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 
     .button-animals {
@@ -1460,12 +1467,12 @@ input::-webkit-slider-thumb:hover {
 
     .animals__button-left {
         left: 285px;
-        transform: translate(-100%, -57%);
+        transform: translate(-100%, -45%);
     }
     
     .animals__button-right {
         right: 285px;
-        transform: translate(100%, -57%);
+        transform: translate(100%, -45%);
     }
 
     .animal__card-icon-meat {
@@ -1766,6 +1773,10 @@ input::-webkit-slider-thumb:hover {
         top: -66px;
         right: -73px;
         z-index: -1;
+    }
+
+    .animal__slider {
+        height: 1420px;
     }
 
 
