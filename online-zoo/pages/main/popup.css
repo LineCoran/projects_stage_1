@@ -13,7 +13,6 @@
     top: 0;
     left: 0;
     width: 33%;
-    height: 100%;
     background-color: #fff;
     border-bottom-right-radius: 15px;
     z-index: 1000;
@@ -72,6 +71,7 @@
 .burger-active .burger__item {
     position: absolute;
 }
+
 
 @media(max-width: 639px){
     .popup {

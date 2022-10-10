@@ -12,8 +12,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 33%;
-    height: 100%;
+    width: 33vw;
     background-color: #fff;
     border-bottom-right-radius: 15px;
     z-index: 1000;

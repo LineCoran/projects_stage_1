@@ -94,8 +94,11 @@ function createCard(cardValues, numberOfSlide) {
 
 
     animalDescription.append(animalName, animalCountry);
-    cardActive.append(animalDescription);
+    
     animalCardPhoto.append(cardPhoto, cardActive);
+
+    let animalDescriptionTwo = animalDescription.cloneNode(true);
+    cardActive.append(animalDescriptionTwo);
 
 
     let animalCardFooter = document.createElement('div');

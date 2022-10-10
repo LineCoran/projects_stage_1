@@ -1297,7 +1297,7 @@ input::-webkit-slider-thumb:hover {
     }
 
     .header__wrapper {
-        margin-top: 80px;
+        /* margin-top: 80px; */
         width: 160%;
         height: 390px;
         background: url(../../assets/images/panda-big.jpg) -173px center / cover no-repeat;
