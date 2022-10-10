@@ -36,13 +36,13 @@ const pets = [
             "svg": "../../assets/icons/meet-fish_icon.svg"
         },
         {
-            "image": "../../assets/images/rectangle-7.jpg",
+            "image": "../../assets/images/rectangle_7.jpg",
             "name": "alligators",
             "description": "Native to Southeastern U.S.",
             "svg": "../../assets/icons/meet-fish_icon.svg"
         },
         {
-            "image": "../../assets/images/rectangle-8.jpg",
+            "image": "../../assets/images/rectangle_8.jpg",
             "name": "gorillas",
             "description": "Native to Congo",
             "svg": "../../assets/icons/banana.svg"
