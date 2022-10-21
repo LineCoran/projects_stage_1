@@ -1,86 +1,33 @@
-const body = document.getElementById('body');
 let setting = {
     size: 4,
     sound: true,
+    moves: 0,
+    countOfSize: 6,
+    minutes: 0,
+    seconds: 0,
+    gameIsStart: false,
 }
 
-function createPuzzle() {
-    let container = document.createElement('div');
-    container.classList.add('container');
-
-    let puzzleNode = document.createElement('div');
-    puzzleNode.id = "PuzzleNode";
-    puzzleNode.classList = "puzzle";
-    for (let i = 1; i <= setting.size**2; i++) {
-        let puzzle = document.createElement('span');
-        if (i === setting.size**2) {
-            puzzle.id = "last__item"   
-        }
-        puzzle.classList = ('puzzle__item');
-        puzzle.setAttribute(`data-id`, `${i}`);
-        puzzle.innerHTML = `${i}`;
-        puzzle.style.height = `${100/setting.size}%`
-        puzzle.style.width = `${100/setting.size}%`
-        puzzleNode.append(puzzle);
-
-        
-    }
-    body.append(container)
-    container.append(puzzleNode);
- 
-}
-
-createPuzzle();
+const body = document.getElementById('body');
+let timer;  
 
 
-const chooseSizeButtons = document.querySelectorAll('.size__button');
-chooseSizeButtons.forEach((item) => {
-    item.addEventListener('click', (event) => {
-        setting.size = Number(event.target.id.split('size-')[1]);
-        body.lastElementChild.remove();
-        createPuzzle()
-        containerNode = document.getElementById('PuzzleNode');
-        itemNodes = Array.from(containerNode.querySelectorAll('.puzzle__item'));
-        COUNT_ITEM = setting.size**2;
-        matrix = getMatrix(itemNodes.map(item => Number(item.dataset.id)));
-        setPositionItems(matrix)
-        unvisibleItem = setting.size**2;
-
-        containerNode.addEventListener('click', (event)=> {
-            const itemNode = event.target.closest('span');
-            if (!itemNode) {
-                return
-            }
-            const itemNumber = Number(itemNode.dataset.id);
-            const clickedItemCoordinate = findCoordinateByItemId(matrix, itemNumber);
-            const unvisibleItemCoordinate = findCoordinateByItemId(matrix, unvisibleItem);
-            const canWeSwap = checkedPossibilityToSwap(clickedItemCoordinate, unvisibleItemCoordinate);
-        
-            if (canWeSwap) {
-                swapItems(clickedItemCoordinate, unvisibleItemCoordinate, matrix)
-            }
-            
-        })
-    })
-});
+createHtml();
+createSetting();
+createInfo();
 
 let containerNode = document.getElementById('PuzzleNode');
 let itemNodes = Array.from(containerNode.querySelectorAll('.puzzle__item'));
 let COUNT_ITEM = setting.size**2;
+let wonMatrix = new Array(setting.size**2).fill(0).map((item, i) => i+1);
 
-
-
+/* set position */
 
 let matrix = getMatrix(
     itemNodes.map(item => Number(item.dataset.id))
 )
-
-const wonMatrix = new Array(setting.size**2).fill(0).map((item, i) => i+1)
-
-
 setPositionItems(matrix) 
 
-/* set position */
 function getMatrix(arr) {
     let matrix = [];
     for (let i = 0; i < setting.size; i ++) {
@@ -116,21 +63,36 @@ function setPosititonStyleCss(item, x, y) {
     item.style.transform = `translate(${x*itemWidth}%, ${y*itemWidth}%)`;
 }
 
+
+// shuffleItems();
 /* Shiffle  */
-const shuffleButton = document.getElementById('shuffle')
+
+let  shuffleButton = document.getElementById('shuffle')
 function shuffleItems() {
     matrix = getMatrix (
         itemNodes.map(item => Number(item.dataset.id))
                  .sort(() => Math.random() - 0.5)
     )
-    setPositionItems(matrix)
+    setPositionItems(matrix);
+
+    setting.moves = 0;
+    changeMoves();
+
+    clearInterval(timer)
+    setting.gameIsStart = false;
+    setting.seconds = 0;
+    setting.minutes = 0;
+    document.getElementById('timer').innerHTML = showTime();
+    
 }
 shuffleButton.addEventListener('click', () => shuffleItems());
 
 /* Change position by click */
 
 let unvisibleItem = setting.size**2;
-containerNode.addEventListener('click', (event)=> {
+containerNode.addEventListener('click', (event)=> listenerForItemNode(event))
+
+function listenerForItemNode(event) {
     const itemNode = event.target.closest('span');
     if (!itemNode) {
         return
@@ -141,10 +103,16 @@ containerNode.addEventListener('click', (event)=> {
     const canWeSwap = checkedPossibilityToSwap(clickedItemCoordinate, unvisibleItemCoordinate);
 
     if (canWeSwap) {
-        swapItems(clickedItemCoordinate, unvisibleItemCoordinate, matrix)
+        swapItems(clickedItemCoordinate, unvisibleItemCoordinate, matrix);
+        setting.moves++;
+        changeMoves()
+        if (!setting.gameIsStart) {
+            setting.gameIsStart = true;
+            timer = setInterval(changeSeconds, 1000);
+        } 
     }
-    
-})
+
+}
 
 function findCoordinateByItemId(matrix, number) {
     for (let y = 0; y < matrix.length; y++){
@@ -214,7 +182,13 @@ window.addEventListener('keydown', (event) => {
     const canWeSwap = checkedPossibilityToSwapByKey(itemCoordinate);
 
     if(canWeSwap) {
-        swapItems(itemCoordinate, unvisibleItemCoordinate, matrix)
+        swapItems(itemCoordinate, unvisibleItemCoordinate, matrix);
+        setting.moves++;
+        changeMoves();
+        if (!setting.gameIsStart) {
+            setting.gameIsStart = true;
+            timer = setInterval(changeSeconds, 1000);
+        } 
     }
     
 })
@@ -227,6 +201,9 @@ function checkedPossibilityToSwapByKey(coord) {
     }
 }
 
+
+//checked won or not
+
 function isWon() {
     const flatCurrentMatrix = matrix.flat()
     for (let i = 0; i<flatCurrentMatrix.length; i++) {
@@ -237,7 +214,217 @@ function isWon() {
 }
 
 function youAreWon() {
+    
+    clearInterval(timer);
     setTimeout(function(){
-        alert('You are won!')
-    }, 250)
+
+        setting.gameIsStart = false;
+        createWinnerWindow();
+    }, 250);
+
 }
+
+
+//create HTML Elements
+
+function createHtml() {
+    let container = document.createElement('div');
+    container.classList.add('container');
+
+    let gameName = document.createElement('h1')
+    gameName.classList.add('gamename');
+    gameName.innerHTML = 'Puzzle Game';
+
+    let mainInner = document.createElement('div');
+    mainInner.classList.add('main__inner');
+
+    let puzzleNode = document.createElement('div');
+    puzzleNode.id = "PuzzleNode";
+    puzzleNode.classList = "puzzle";
+    for (let i = 1; i <= setting.size**2; i++) {
+        let puzzle = document.createElement('span');
+        if (i === setting.size**2) {
+            puzzle.id = "last__item"   
+        }
+        puzzle.classList = ('puzzle__item');
+        puzzle.setAttribute(`data-id`, `${i}`);
+        puzzle.innerHTML = `${i}`;
+        puzzle.style.height = `${100/setting.size}%`
+        puzzle.style.width = `${100/setting.size}%`
+        puzzleNode.append(puzzle);
+    }
+    body.append(container)
+    container.append(gameName)
+    container.append(mainInner);
+    mainInner.append(puzzleNode);
+}
+
+function createSetting() {
+    let settingNode = document.createElement('div');
+    settingNode.classList.add('setting');
+
+    let settingInner = document.createElement('div')
+    settingInner.classList.add('setting__inner');
+
+    let settingMainText = document.createElement('h2');
+    settingMainText.classList.add('setting__maintext'); 
+    settingMainText.innerHTML = "Setting";
+
+    let chooseSize = document.createElement('div');
+    chooseSize.classList.add('choose__size'); 
+
+    for (let i = 0; i< setting.countOfSize; i++) {
+        let sizeButton = document.createElement('button');
+        sizeButton.classList.add("size__button"); 
+        sizeButton.id = `size-${i+3}`;
+        sizeButton.innerHTML = `${i+3}x${i+3}`;
+        chooseSize.append(sizeButton);
+    }
+
+    let shuffleButton = document.createElement('button');
+    shuffleButton.classList.add('shuffle');
+    shuffleButton.id = "shuffle";
+    shuffleButton.innerHTML = 'Shuffle and start';
+
+    settingInner.append(settingMainText, chooseSize, shuffleButton);
+    settingNode.append(settingInner);
+    body.querySelector('.main__inner').append(settingNode);
+}
+
+function createInfo() {
+    let infoWrapper = document.createElement('div');
+    infoWrapper.classList.add('info__wrapper')
+
+    let infoTime = document.createElement('div');
+    infoTime.classList.add('info__value')
+    let infoTimeTitle = document.createElement('h3');
+    infoTimeTitle.innerHTML = "Time";
+    let infoTimeSubTitle = document.createElement('p');
+    infoTimeSubTitle.id = 'timer';
+    infoTimeSubTitle.innerHTML = "00:00"; 
+
+    let infoMoves = document.createElement('div');
+    infoMoves.classList.add('info__value')
+    let infoMovesTitle = document.createElement('h3');
+    infoMovesTitle.innerHTML = "Moves";
+    let infoMovesSubTitle = document.createElement('p');
+    infoMovesSubTitle.id = 'moves';
+    infoMovesSubTitle.innerHTML = setting.moves; 
+
+
+    infoTime.append(infoTimeTitle, infoTimeSubTitle);
+    infoMoves.append(infoMovesTitle, infoMovesSubTitle);
+    infoWrapper.append(infoTime, infoMoves);
+
+    document.querySelector('.setting').append(infoWrapper)
+}
+
+function createWinnerWindow(){
+    let winnerWindow = document.createElement('div');
+    winnerWindow.classList.add('winner');
+
+    let winnerWrapper = document.createElement('div');
+    winnerWrapper.classList.add('winner__wrapper');
+
+    let winnerTitle = document.createElement('h2');
+    winnerTitle.classList.add('winner__title');
+    winnerTitle.innerHTML = `Hooray! You solved the puzzle in ${showTime()} and ${setting.moves+1} moves`
+
+    let winnerCloseButton = document.createElement('button');
+    winnerCloseButton.classList.add('winner__close');
+    winnerCloseButton.innerHTML = 'Continue';
+
+    winnerWrapper.append(winnerTitle, winnerCloseButton);
+    winnerWindow.append(winnerWrapper);
+
+    winnerCloseButton.addEventListener('click', function(){
+        document.querySelector('.winner').remove()
+    })
+
+    body.append(winnerWindow)
+}
+
+//choose size of nodeIntems
+let chooseSizeButtons = document.querySelectorAll('.size__button');
+chooseSizeButtons.forEach((item) => {
+    item.addEventListener('click', (event) => listenerForSizeButtons(event))
+});
+
+function listenerForSizeButtons(event) {
+    setting.size = Number(event.target.id.split('size-')[1]);
+    init();
+}
+
+
+
+// init game 
+function init() {
+
+    setting.moves = 0;
+    if (document.querySelector('.container')) {
+        document.querySelector('.container').remove()
+    }
+    createHtml();  
+    createSetting();
+    createInfo();
+    containerNode = document.getElementById('PuzzleNode'); 
+    itemNodes = Array.from(containerNode.querySelectorAll('.puzzle__item'));
+    COUNT_ITEM = setting.size**2;
+    matrix = getMatrix(itemNodes.map(item => Number(item.dataset.id)));
+    setPositionItems(matrix)
+    unvisibleItem = setting.size**2;
+    containerNode.addEventListener('click', (event)=> listenerForItemNode(event))
+
+    chooseSizeButtons = document.querySelectorAll('.size__button');
+    chooseSizeButtons.forEach((item) => {
+        item.addEventListener('click', (event) => listenerForSizeButtons(event))
+    });
+
+    shuffleButton = document.getElementById('shuffle');
+    shuffleButton.addEventListener('click', () => shuffleItems());
+
+    changeMoves();
+
+    clearInterval(timer);
+
+    setTimeout(function(){
+        setting.gameIsStart = false;
+    }, 250);
+
+    shuffleItems()
+}
+
+// setting 
+
+function changeMoves() {
+    let moveInfo = document.getElementById('moves');
+    moveInfo.innerHTML = setting.moves;
+}
+
+
+
+// timer()
+
+function changeSeconds() {
+
+    setting.seconds++;
+    if (setting.seconds == 60) {
+        setting.seconds=0;
+        setting.minutes++;
+    }
+    document.getElementById('timer').innerHTML = showTime();
+}
+
+function showTime() {
+    console.log(setting.gameIsStart);
+    let secondsString = ""
+    let minutesString = ""
+    secondsString = (String(setting.seconds).length==1)?`0${setting.seconds}`:`${setting.seconds}`;
+    minutesString = (String(setting.minutes).length==1)?`0${setting.minutes}`:`${setting.minutes}`;
+    return `${minutesString}:${secondsString}`;
+}
+
+
+
+
+
