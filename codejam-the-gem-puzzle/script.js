@@ -1,3 +1,6 @@
+const audio = new Audio();
+audio.src = "./audio/lock.mp3";
+
 let setting = {
     size: 4,
     sound: true,
@@ -6,6 +9,7 @@ let setting = {
     minutes: 0,
     seconds: 0,
     gameIsStart: false,
+    volume: true,
 }
 
 const body = document.getElementById('body');
@@ -64,15 +68,20 @@ function setPosititonStyleCss(item, x, y) {
 }
 
 
-// shuffleItems();
+shuffleItems();
 /* Shiffle  */
 
 let  shuffleButton = document.getElementById('shuffle')
 function shuffleItems() {
-    matrix = getMatrix (
-        itemNodes.map(item => Number(item.dataset.id))
-                 .sort(() => Math.random() - 0.5)
-    )
+    do {
+        matrix = getMatrix (
+            itemNodes.map(item => Number(item.dataset.id))
+                     .sort(() => Math.random() - 0.5)
+        )
+
+        console.log(isValidMatrix(matrix))
+    } while (!isValidMatrix(matrix))
+    
     setPositionItems(matrix);
 
     setting.moves = 0;
@@ -105,7 +114,8 @@ function listenerForItemNode(event) {
     if (canWeSwap) {
         swapItems(clickedItemCoordinate, unvisibleItemCoordinate, matrix);
         setting.moves++;
-        changeMoves()
+        changeMoves();
+        playAudio();
         if (!setting.gameIsStart) {
             setting.gameIsStart = true;
             timer = setInterval(changeSeconds, 1000);
@@ -129,7 +139,7 @@ function checkedPossibilityToSwap(clicked, blank) {
     const absY = Math.abs(clicked.y - blank.y);
     if (
         (absX == 1 && absY == 0) || 
-        (absY == 1 && absX == 0)
+        (absY == 1 && absX == 0) 
     )
         {
         return true
@@ -185,6 +195,8 @@ window.addEventListener('keydown', (event) => {
         swapItems(itemCoordinate, unvisibleItemCoordinate, matrix);
         setting.moves++;
         changeMoves();
+
+        playAudio();
         if (!setting.gameIsStart) {
             setting.gameIsStart = true;
             timer = setInterval(changeSeconds, 1000);
@@ -286,7 +298,14 @@ function createSetting() {
     shuffleButton.id = "shuffle";
     shuffleButton.innerHTML = 'Shuffle and start';
 
-    settingInner.append(settingMainText, chooseSize, shuffleButton);
+    let soundButton = document.createElement('button');
+    soundButton.classList.add("sound__button")
+    soundButton.classList.add("sound__button-on");
+    soundButton.id = "sound";
+    soundButton.innerHTML = "Sound";
+    soundButton.addEventListener('click', (event)=>changeSoundVolume(event));
+
+    settingInner.append(settingMainText, chooseSize, soundButton, shuffleButton);
     settingNode.append(settingInner);
     body.querySelector('.main__inner').append(settingNode);
 }
@@ -416,7 +435,6 @@ function changeSeconds() {
 }
 
 function showTime() {
-    console.log(setting.gameIsStart);
     let secondsString = ""
     let minutesString = ""
     secondsString = (String(setting.seconds).length==1)?`0${setting.seconds}`:`${setting.seconds}`;
@@ -425,6 +443,51 @@ function showTime() {
 }
 
 
+// checkValidMatrix 
+function isValidMatrix(matrix) {
+    let currentMatrix = JSON.parse(JSON.stringify(matrix)).flat();
+    let countOfInversion = 0;
+    let blank = Math.floor(currentMatrix.indexOf(setting.size**2)/setting.size);
 
+    for (let i = 0; i < currentMatrix.length; i++) {
+        let item = currentMatrix[i];
+        if (item == setting.size**2) {
+            continue;
+        }
+        for (let j = currentMatrix.indexOf(item); j < currentMatrix.length; j++) {
+            if (item > currentMatrix[j]) {
+                countOfInversion++
+            }
+        }
+    }
 
+    if (setting.size%2 == 0) {
+        return ((countOfInversion+blank)%2 !== 0)?true:false
+    } else {
+        return (countOfInversion%2 === 0)?true:false;
+    }
+}
+
+// playAudio 
+
+function playAudio() {
+    if (setting.volume) {
+        let newSound = new Audio();
+        newSound.src = "./audio/lock.mp3"
+        newSound.play()
+    } else {
+        return;
+    }
+    
+}
+
+// soundButton 
+
+function changeSoundVolume(event) {
+
+    let item = event.target;
+
+    item.classList.toggle('sound__button-off');
+    setting.volume = (!setting.volume)?true:false;
+}
 
