@@ -27,9 +27,9 @@ body {
 }
 
 .gamename {
-    font-size: 72px;
+    font-size: 56px;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .main__inner {
     width: 100%;
@@ -77,7 +77,7 @@ body {
     display: block;
     margin: 0 auto;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .setting {
@@ -185,3 +185,74 @@ button:hover {
     border-width: 3px;
     font-size: 24px;
 }
+
+@media (max-width: 1024px) {
+
+    .winner {
+        width: 50vw;
+    }
+    .puzzle {
+        width: 400px;
+        height: 400px;
+    } 
+
+    .setting__maintext {
+        font-size: 16px;
+    }
+    .setting__inner, .setting__inner button {
+        font-size: 12px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .puzzle {
+        width: 250px;
+        height: 250px;
+    } 
+
+    .winner__wrapper {
+        padding: 30px 10px;
+    }
+
+    .winner__title {
+        font-size: 16px;
+    }
+
+    .winner__close {
+        font-size: 16px;
+    }
+
+    .setting__maintext {
+        font-size: 16px;
+    }
+    .setting__inner, .setting__inner button {
+        font-size: 12px;
+    }
+
+    .puzzle__item {
+        font-size: 16px;
+    }
+  }
+
+  @media (max-width: 500px) {
+
+    .gamename {
+        font-size: 36px;
+    }
+
+    .puzzle {
+        margin-bottom: 10px;
+    }
+    .setting {
+        width: 60%;
+    }
+    .main__inner {
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+  }
+ 
