@@ -10,15 +10,23 @@ let setting = {
     seconds: 0,
     gameIsStart: false,
     volume: true,
+    thereIsWinnerWindwo: false,
+    game: 0,
 }
+
 
 const body = document.getElementById('body');
 let timer;  
 
-
+setStartSetting();
 createHtml();
 createSetting();
 createInfo();
+
+
+
+
+
 
 let containerNode = document.getElementById('PuzzleNode');
 let itemNodes = Array.from(containerNode.querySelectorAll('.puzzle__item'));
@@ -230,8 +238,15 @@ function youAreWon() {
     clearInterval(timer);
     setTimeout(function(){
 
+        setResultIfYouAreWon()
         setting.gameIsStart = false;
         createWinnerWindow();
+
+        setting.moves = 0;
+        changeMoves();
+        setting.seconds = -1;
+        changeSeconds();
+        
     }, 250);
 
 }
@@ -305,7 +320,16 @@ function createSetting() {
     soundButton.innerHTML = "Sound";
     soundButton.addEventListener('click', (event)=>changeSoundVolume(event));
 
-    settingInner.append(settingMainText, chooseSize, soundButton, shuffleButton);
+
+    let bestButton = document.createElement('button');
+    bestButton.classList.add("sound__button")
+    bestButton.classList.add("sound__button-on")
+    bestButton.id = "best-result";
+    bestButton.innerHTML = "Top result";
+    bestButton.addEventListener('click', (event)=>creatingListBestResult(event));
+
+
+    settingInner.append(settingMainText, chooseSize, soundButton, bestButton, shuffleButton);
     settingNode.append(settingInner);
     body.querySelector('.main__inner').append(settingNode);
 }
@@ -339,6 +363,7 @@ function createInfo() {
 }
 
 function createWinnerWindow(){
+    
     let winnerWindow = document.createElement('div');
     winnerWindow.classList.add('winner');
 
@@ -347,7 +372,7 @@ function createWinnerWindow(){
 
     let winnerTitle = document.createElement('h2');
     winnerTitle.classList.add('winner__title');
-    winnerTitle.innerHTML = `Hooray! You solved the puzzle in ${showTime()} and ${setting.moves+1} moves`
+    winnerTitle.innerHTML = `Hooray! You solved the puzzle in ${showTime()} and ${setting.moves} moves`
 
     let winnerCloseButton = document.createElement('button');
     winnerCloseButton.classList.add('winner__close');
@@ -360,6 +385,7 @@ function createWinnerWindow(){
         document.querySelector('.winner').remove()
     })
 
+    
     body.append(winnerWindow)
 }
 
@@ -371,6 +397,7 @@ chooseSizeButtons.forEach((item) => {
 
 function listenerForSizeButtons(event) {
     setting.size = Number(event.target.id.split('size-')[1]);
+    bestResult = (!localStorage.getItem(`${setting.size}result`))?[]:JSON.parse(localStorage.getItem(`${setting.size}result`));
     init();
 }
 
@@ -484,10 +511,77 @@ function playAudio() {
 // soundButton 
 
 function changeSoundVolume(event) {
-
     let item = event.target;
-
     item.classList.toggle('sound__button-off');
     setting.volume = (!setting.volume)?true:false;
 }
+
+// top best result 
+
+function creatingListBestResult() {
+    sortBestResult();
+
+    let winnerWindow = document.createElement('div');
+    winnerWindow.classList.add('winner', 'result');
+
+    let winnerWrapper = document.createElement('div');
+    winnerWrapper.classList.add('winner__wrapper', 'result__wrapper');
+
+    let winnerTitle = document.createElement('h2');
+    winnerTitle.classList.add('winner__title');
+    winnerTitle.innerHTML = `Top 10 results size ${setting.size}x${setting.size}`;
+
+    let winnerList = document.createElement('ol');
+
+    for (let i = 0; i < bestResult.length; i++) {
+        let winnerListItem = document.createElement('li');
+        winnerListItem.innerHTML = `${bestResult[i]} Moves`;
+        winnerList.append(winnerListItem);
+        console.log(bestResult.length)
+    }
+
+    let winnerCloseButton = document.createElement('button');
+    winnerCloseButton.classList.add('winner__close');
+    winnerCloseButton.innerHTML = 'Continue';
+
+    winnerWrapper.append(winnerTitle, winnerCloseButton, winnerList);
+    winnerWindow.append(winnerWrapper);
+
+    winnerCloseButton.addEventListener('click', function(){
+        document.querySelector('.winner').remove();
+        setting.thereIsWinnerWindwo = false;
+    })
+
+    if (!setting.thereIsWinnerWindwo) {
+        body.append(winnerWindow);
+        setting.thereIsWinnerWindwo = true;    
+    }
+}
+
+function setStartSetting() {
+    setting.size = (localStorage.getItem(`currentSize`))?localStorage.getItem('currentSize'):4;
+    bestResult = (!localStorage.getItem(`${setting.size}result`))?[]:JSON.parse(localStorage.getItem(`${setting.size}result`));
+}
+
+function setResultIfYouAreWon() {
+    bestResult.push(
+        setting.moves
+    )
+}
+
+
+window.addEventListener('beforeunload', function() {
+    localStorage.setItem(`${setting.size}result`, JSON.stringify(bestResult));
+    localStorage.setItem(`currentSize`, setting.size);
+})
+console.log(bestResult);
+console.log(setting.size)
+
+
+function sortBestResult() {
+    if (!!bestResult.length) {
+        bestResult.sort((a, b) => a - b);
+    }
+}
+
 
