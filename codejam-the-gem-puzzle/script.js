@@ -12,6 +12,7 @@ let setting = {
     volume: true,
     thereIsWinnerWindwo: false,
     game: 0,
+    winnerWindow: false,
 }
 
 
@@ -108,6 +109,10 @@ let unvisibleItem = setting.size**2;
 containerNode.addEventListener('click', (event)=> listenerForItemNode(event))
 
 function listenerForItemNode(event) {
+    if (setting.winnerWindow) {
+        return
+    }
+
     const itemNode = event.target.closest('span');
     if (!itemNode) {
         return
@@ -172,6 +177,10 @@ window.addEventListener('keydown', (event) => {
     if (!event.key.includes("Arrow")){
         return
     };
+
+    if (setting.winnerWindow) {
+        return
+    }
     const unvisibleItemCoordinate = findCoordinateByItemId(matrix, unvisibleItem);
 
     const itemCoordinate = {
@@ -337,10 +346,6 @@ function loadProgress() {
     let loadMatrix = localStorage.getItem("saveMatrix").split(',');
     matrix = getMatrix(loadMatrix);  
     
-    // init();
-    // setPositionItems(matrix)
-    // changeMoves()
-    // changeSeconds();
 
     if (document.querySelector('.container')) {
         document.querySelector('.container').remove()
@@ -372,7 +377,7 @@ function loadProgress() {
         setting.gameIsStart = false;
     }, 250);
 
-    // shuffleItems()
+    shuffleItems()
 }
 
 
@@ -434,11 +439,15 @@ function createWinnerWindow(){
     winnerWindow.append(winnerWrapper);
 
     winnerCloseButton.addEventListener('click', function(){
-        document.querySelector('.winner').remove()
+        document.querySelector('.winner').remove();
+        setting.winnerWindow = false;    
+        shuffleItems();
     })
 
     
-    body.append(winnerWindow)
+    body.append(winnerWindow);
+
+    setting.winnerWindow = true;
 }
 
 //choose size of nodeIntems
