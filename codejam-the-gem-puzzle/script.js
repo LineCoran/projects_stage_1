@@ -17,6 +17,7 @@ let setting = {
 
 
 const body = document.getElementById('body');
+
 let timer;  
 
 setStartSetting();
@@ -259,6 +260,9 @@ function youAreWon() {
 }
 
 
+
+
+
 //create HTML Elements
 
 function createHtml() {
@@ -275,10 +279,14 @@ function createHtml() {
     let puzzleNode = document.createElement('div');
     puzzleNode.id = "PuzzleNode";
     puzzleNode.classList = "puzzle";
+    puzzleNode.ondragover = allowDrop;
+    puzzleNode.ondrop = drop;
     for (let i = 1; i <= setting.size**2; i++) {
         let puzzle = document.createElement('span');
+        puzzle.draggable = true;  
+        puzzle.ondragstart = drag;
         if (i === setting.size**2) {
-            puzzle.id = "last__item"   
+            puzzle.id = "last__item" 
         }
         puzzle.classList = ('puzzle__item');
         puzzle.setAttribute(`data-id`, `${i}`);
@@ -642,4 +650,83 @@ function sortBestResult() {
     }
 }
 
+function allowDrop(event) {
+    event.preventDefault();
+}
 
+
+function drag(event) {
+    
+
+    event.dataTransfer.setData('id', event.target.getAttribute('data-id'))
+
+    //debugger
+    event.dataTransfer.setData('x', event.clientX);
+    event.dataTransfer.setData('y', event.clientY);
+    event.dataTransfer.setData('width', event.target.clientWidth);
+    // event.dataTransfer.setData('xx', event.target.pageY);
+    // event.dataTransfer.setData('yy', event.target.pageX);
+}
+
+
+
+function drop(event) {
+    let itemId = Number(event.dataTransfer.getData('id'))
+    
+
+    let start = {
+        x: Number(event.dataTransfer.getData('x')),
+        y: Number(event.dataTransfer.getData('y')),
+    }
+     let end = {
+        x: Number(event.clientX),
+        y: Number(event.clientY)
+     }
+
+     let width  = Number(event.dataTransfer.getData('width'));
+
+   
+    if (canWeSwapWithDragAndDrop(start, end, width)) {
+        swapWithDrop(itemId);
+    }
+
+    
+}
+
+function swapWithDrop(dropItem) {
+    if (setting.winnerWindow) {
+        return
+    }
+    const itemNumber = Number(dropItem);
+    const clickedItemCoordinate = findCoordinateByItemId(matrix, itemNumber);
+    const unvisibleItemCoordinate = findCoordinateByItemId(matrix, unvisibleItem);
+    const canWeSwap = checkedPossibilityToSwap(clickedItemCoordinate, unvisibleItemCoordinate);
+
+if (canWeSwap) {
+    swapItems(clickedItemCoordinate, unvisibleItemCoordinate, matrix);
+    setting.moves++;
+    changeMoves();
+    playAudio();
+    if (!setting.gameIsStart) {
+        setting.gameIsStart = true;
+        timer = setInterval(changeSeconds, 1000);
+    } 
+}
+}
+
+
+function canWeSwapWithDragAndDrop(start, end, width) {
+    let newX = Math.abs(start.x - end.x)
+    let newY = Math.abs(start.y - end.y)
+    if (
+
+        ((newX <= width*2) && (newY <= width)) ||
+        ((newY <= width*2) && (newX <= width))
+
+    ) { 
+       
+        return true
+    } else {
+        return false
+    } 
+}
