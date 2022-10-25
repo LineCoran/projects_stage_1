@@ -86,8 +86,6 @@ function shuffleItems() {
             itemNodes.map(item => Number(item.dataset.id))
                      .sort(() => Math.random() - 0.5)
         )
-
-        console.log(isValidMatrix(matrix))
     } while (!isValidMatrix(matrix))
     
     setPositionItems(matrix);
@@ -313,25 +311,79 @@ function createSetting() {
     shuffleButton.id = "shuffle";
     shuffleButton.innerHTML = 'Shuffle and start';
 
-    let soundButton = document.createElement('button');
-    soundButton.classList.add("sound__button")
-    soundButton.classList.add("sound__button-on");
-    soundButton.id = "sound";
-    soundButton.innerHTML = "Sound";
-    soundButton.addEventListener('click', (event)=>changeSoundVolume(event));
+    let soundButton = createButtons("sound", "Sound", event=>changeSoundVolume(event))
+    let bestButton = createButtons("best-result", "Top result", (event)=>creatingListBestResult(event) );
+    let saveButton = createButtons('save-button', "Save", event=>saveProgress(event));
+    let loadButton = createButtons('load-button', "Load", event=>loadProgress(event));
 
-
-    let bestButton = document.createElement('button');
-    bestButton.classList.add("sound__button")
-    bestButton.classList.add("sound__button-on")
-    bestButton.id = "best-result";
-    bestButton.innerHTML = "Top result";
-    bestButton.addEventListener('click', (event)=>creatingListBestResult(event));
-
-
-    settingInner.append(settingMainText, chooseSize, soundButton, bestButton, shuffleButton);
+    settingInner.append(settingMainText, chooseSize, soundButton, bestButton, saveButton, loadButton, shuffleButton);
     settingNode.append(settingInner);
     body.querySelector('.main__inner').append(settingNode);
+}
+
+function saveProgress() {
+    localStorage.setItem("saveSize", setting.size);
+    localStorage.setItem("saveMoves", setting.moves);
+    localStorage.setItem("saveSecond", setting.seconds);
+    localStorage.setItem("saveMinutes", setting.minutes);
+    localStorage.setItem("saveMatrix", matrix);
+}
+
+function loadProgress() {
+    setting.size =  localStorage.getItem("saveSize");
+    setting.moves = localStorage.getItem("saveMoves");
+    setting.seconds =  localStorage.getItem("saveSecond");
+    setting.minutes =  localStorage.getItem("saveMinutes");
+    let loadMatrix = localStorage.getItem("saveMatrix").split(',');
+    matrix = getMatrix(loadMatrix);  
+    
+    // init();
+    // setPositionItems(matrix)
+    // changeMoves()
+    // changeSeconds();
+
+    if (document.querySelector('.container')) {
+        document.querySelector('.container').remove()
+    }
+    createHtml();  
+    createSetting();
+    createInfo();
+    containerNode = document.getElementById('PuzzleNode'); 
+    itemNodes = Array.from(containerNode.querySelectorAll('.puzzle__item'));
+    COUNT_ITEM = setting.size**2;
+    setPositionItems(matrix)
+    unvisibleItem = setting.size**2;
+    containerNode.addEventListener('click', (event)=> listenerForItemNode(event))
+
+    chooseSizeButtons = document.querySelectorAll('.size__button');
+    chooseSizeButtons.forEach((item) => {
+        item.addEventListener('click', (event) => listenerForSizeButtons(event))
+    });
+
+    shuffleButton = document.getElementById('shuffle');
+    shuffleButton.addEventListener('click', () => shuffleItems());
+
+    changeMoves();
+    changeSeconds();
+
+    clearInterval(timer);
+
+    setTimeout(function(){
+        setting.gameIsStart = false;
+    }, 250);
+
+    // shuffleItems()
+}
+
+
+function createButtons(id, innerHtml, listener) {
+    let button = document.createElement('button')
+    button.classList.add("sound__button")
+    button.classList.add("sound__button-on");
+    button.id = id;
+    button.innerHTML = innerHtml;
+    button.addEventListener('click', listener);
+    return button;
 }
 
 function createInfo() {
@@ -537,7 +589,6 @@ function creatingListBestResult() {
         let winnerListItem = document.createElement('li');
         winnerListItem.innerHTML = `${bestResult[i]} Moves`;
         winnerList.append(winnerListItem);
-        console.log(bestResult.length)
     }
 
     let winnerCloseButton = document.createElement('button');
@@ -574,8 +625,6 @@ window.addEventListener('beforeunload', function() {
     localStorage.setItem(`${setting.size}result`, JSON.stringify(bestResult));
     localStorage.setItem(`currentSize`, setting.size);
 })
-console.log(bestResult);
-console.log(setting.size)
 
 
 function sortBestResult() {
