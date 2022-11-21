@@ -1,0 +1,165 @@
+
+@media (max-width: 1200px) {
+  
+    .header__nav__list {
+      margin-right: 0;
+    }
+
+    .answer__list {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .answer__item {
+        font-size: 14px;
+        margin-left: 0;
+    } 
+
+    .birds__picture  {
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    .play {
+        width: 30px;
+        height: 30px;
+    }
+
+    .birds__inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .description {
+        margin-top: 10px;
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    
+    .logo {
+      font-size: 24px;
+    }
+  
+    .header__nav__list {
+      font-size: 16px;
+    }
+  
+    .header__nav__item {
+      margin-right: 10px;
+    }
+  
+    .language {
+      margin-right: 15px;
+    }
+
+    .nav {
+        width: 100%;
+    }
+
+    .description__right__text {
+        font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+
+  
+    .header__inner {
+      padding: 5px;
+    }
+    
+    .logo {
+      display: none;
+    }
+  
+    .header__inner {
+      justify-content: center;
+    }
+  
+    .header__nav__item {
+      font-size: 14px;
+    }
+  
+    .score {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  
+    .language__button {
+      font-size: 14px;
+      padding: 2px;
+    }
+  
+    .language__button-en {
+      margin-right: 10px;
+    }
+  
+    #layer-main:after {
+      font: 100px/0.65 "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif; 
+    }
+  
+    .welcome__button {
+      font-size: 18px;
+      padding: 10px 20px;
+    }
+
+    .stage {
+        width: 100%;
+    }
+
+    .description__right {
+        overflow-wrap: normal;
+    }
+    .description__right__title {
+        font-size: 18px;
+    }
+
+    .description__left {
+        min-width: 100px
+    }
+    .description__left__img  {
+        width: 75px;
+        height: 75px;
+    }
+
+    .player {
+        width: 150px;
+    }
+  
+  }
+
+  @media (max-width: 768px) {
+    
+    #layer-main:after {
+        font: 50px/0.65 "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif; 
+      }
+  }
+
+  @media (max-width: 700px) {
+
+    .footer {
+        height: 100%;
+    }
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-inner_copyright {
+        margin: 10px 0;
+
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .footer-inner_contact-links {
+        margin-bottom: 15px;      
+    }
+
+    .contact-links_item {
+        font-size: 14px;
+    }
+}

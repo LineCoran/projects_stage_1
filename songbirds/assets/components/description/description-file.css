@@ -1,0 +1,130 @@
+.description {
+    width: 550px;
+    height: 350px;
+    display: flex;
+    /* background-color: #fff;
+    background: linear-gradient(#f8f8f8, #fff); */
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
+
+    border-radius: 6px;
+    overflow: hidden;
+    transition: 0.3s linear;
+  }
+
+  .description__left__text {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: bold;
+    background: rgba(0,0,0,0.15);
+    padding: 0.125rem 0.75rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .description__left__img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    margin: 15px 0;
+    border: 2px solid rgba(0,0,0,0.25);
+
+  }
+
+  .description__left {
+    min-width: 150px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(#dE685E, #EE786E); */
+    transition: 0.3s linear;
+  }
+
+  .description__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px;
+  }
+
+  .description__right__title {
+    font-size: 32px;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+  .error-shake {
+    animation: shake 0.5s;
+  }
+
+  .error-color {
+    transition: .3s linear;
+    box-shadow: 0 0 16px 8px rgba(255, 0, 0, 50%);
+  }
+
+
+  .correct-color {
+    transition: .3s linear;
+     box-shadow: 0 0 10px 10px rgb(0 255 0 / 40%);
+  }
+
+  .correct-card {
+    transition: 0.3s linear;
+    background: linear-gradient(#37c550, #3dfb0a57)
+  }
+
+  
+  
+  .error-card5 {
+    transition: .3s linear;
+    background: linear-gradient(#c53737, #fb0a0a84)
+
+  }
+
+  .error-card4 {
+    transition: .3s linear;
+    background: linear-gradient(#c55d37, #fb760a57)
+
+  }
+
+  .error-card3 {
+    transition: .3s linear;
+    background: linear-gradient(#c58a37, #fb930a87)
+
+  }
+
+  .error-card2 {
+    transition: .3s linear;
+    background: linear-gradient(#c59d37, #fbcf0a95)
+  }
+
+  .error-card1 {
+    transition: .3s linear;
+    background: linear-gradient(#b5c537, #bbfb0a8e)
+  }
+
+  .error-card0 {
+    transition: .3s linear;
+    background: linear-gradient(#37c550, #3dfb0a57)
+  }
+  
+  
+
+  
