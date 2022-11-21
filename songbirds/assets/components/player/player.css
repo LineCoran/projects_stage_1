@@ -1,0 +1,149 @@
+/* player */
+
+
+.player {
+    position: relative;
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 20px;
+  }
+  
+  .player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .audio__container {
+    width: 100%;
+  }
+  
+  .player-icon,
+  .slider-icon,
+  .change-quote {
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s;  
+  }
+  
+  .player-icon:hover,
+  .slider-icon:hover,
+  .change-quote:hover {
+    opacity: 1;
+  }
+  
+  .player-icon:active,
+  .slider-icon:active,
+  .change-quote:active {
+    border: 0;
+    outline: 0;  
+    transform: scale(1.1);
+  }
+  .progress {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: #A3A3A3;
+    width: 100%;
+    border-radius: 30px;
+  }
+  
+  .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -5px;
+    margin-left: 0px;
+    height: 15px;
+    width: 15px;
+    border: 0;
+    background: #A3A3A3;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .progress::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    max-height: 5px;
+    border-radius: 30px;
+  }
+  
+  .progress:focus {
+    outline: none;
+  }
+  
+  #progress__audio {
+    width: 100%;
+  }
+  
+  /* ========TIME OF SONG======== */
+  .time__container {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .exact-time {
+    font-size: 12px;
+  }
+  
+  .duration-time {
+    font-size: 12px;
+  }
+  
+  /* ========VOLUME======== */
+  .volume__container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  .volume {
+    width: 70%;
+  }
+  
+  .audio__wraper-main {
+    width: 100%;
+    height: 135px;
+    position: relative;
+  }
+  
+  
+  .audio__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition-property: transform, opacity;
+    transition-duration: 0.6s, 0.4s;
+    z-index: 10;
+  }
+  
+  /* ========PLAY-LIST======== */
+  
+  
+  .play {
+    width: 100px;
+    height: 100px;
+  }
+
+  .player-icon-2 {
+    width: 30px;
+    height: 30px;
+  }
