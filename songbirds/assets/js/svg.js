@@ -27,7 +27,7 @@ const Svg =
         {
             "play": audioPlayIcon,
             "pause": audioPauseIcon,
-        }
+        },
 
     ]
 
