@@ -2,7 +2,7 @@ import createHeaderBlock from "../components/header/header";
 import createWelcomeBlock from "../components/welcome/welcome";
 import init from "./game";
 import { addListenerForLanguageButtons} from "./languageButtons";
-import setActiveEnglish from "./languageButtons"
+import setActiveEnglish from "./languageButtons";
 
 let gameIsStart = false;
 
@@ -28,7 +28,7 @@ export function showStartPageAgain() {
 }
 
 export function startGame(game) {
-
+    
     if (game) {
         deleteWelcomePage();
     }

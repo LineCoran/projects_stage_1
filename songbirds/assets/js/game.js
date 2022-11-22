@@ -12,6 +12,10 @@ import { listenerForHeaderButtons } from "./startPageShow";
 import { addListenerForLanguageButtons } from "./languageButtons";
 import setActiveEnglish from "./languageButtons";
 import Svg from "./svg";
+import correctAnswerAudio from "../audio/correct.mp3";
+import mistakeAnswerAudio from "../audio/mistake.mp3";
+
+
 export default function init() {
     let nextQuestionButton;
     let globalScore;
@@ -103,6 +107,7 @@ export default function init() {
 
         if (isCorrect) {
             if(!stepEnd) {
+                playAudioAnswer(correctAnswerAudio)
                 globalScore+=stepScore;
                 clickedBirdButton.parentNode.classList.add('answer__item-correct');
                 globalScoreHtmlBlock.innerHTML = `${globalScore}`;
@@ -131,6 +136,7 @@ export default function init() {
             }
         } else {
             if (!stepEnd && !isCorrectAnswer(clickedBirdName, currentDescriptionBlockName)) {
+                playAudioAnswer(mistakeAnswerAudio)
                 failCount++
                 descriptionLeftBlock.classList.remove('correct-card');
                 descriptionLeftBlock.classList.remove(`error-card${failCount-1}`);
@@ -285,6 +291,12 @@ export default function init() {
         const wrapper = document.getElementById('wrapper');
         const headerBlock = createHeaderBlock(language);
         wrapper.prepend(headerBlock);
+    }
+
+    function playAudioAnswer(sound) {
+        const audio = new Audio();
+        audio.src = sound;
+        audio.play();
     }
 
     startGame()
