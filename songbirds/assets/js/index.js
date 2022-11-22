@@ -31,9 +31,3 @@ function createElementFavicon(type, favicon) {
 
 createElementFavicon('image/svg+xml', linkSvg);
 createElementFavicon('image/png', linkPng);
-
-
-
-
-// <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg">
-// <link rel="icon" type="image/png" href="./assets/favicon/favicon.png">
