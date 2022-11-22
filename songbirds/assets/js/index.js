@@ -11,13 +11,23 @@ import startPageShow from './startPageShow';
 import setLanguage from './language';
 import setActiveEnglish from './languageButtons';
 import rsLogo from '../svg/rs_school_js.svg';
+import linkSvg from '../favicon/favicon.svg';
+import linkPng from '../favicon/favicon.svg';
 
 setLanguage();
 startPageShow();
 setActiveEnglish();
-document.querySelector('.rsschool-logo').setAttribute('src', rsLogo)
+document.querySelector('.rsschool-logo').setAttribute('src', rsLogo);
 
 
+function createElementFavicon(type, favicon) {
+    const link = document.createElement('link');
+    const head = document.head;
+    link.setAttribute('rel', 'icon');
+    link.setAttribute('type', type);
+    link.setAttribute('href', favicon)
+    head.append(link);
+}
 
-
-
+createElementFavicon('image/svg+xml', linkSvg);
+createElementFavicon('image/png', linkPng);
