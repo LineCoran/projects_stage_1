@@ -12,7 +12,7 @@ import setLanguage from './language';
 import setActiveEnglish from './languageButtons';
 import rsLogo from '../svg/rs_school_js.svg';
 import linkSvg from '../favicon/favicon.svg';
-import linkPng from '../favicon/favicon.svg';
+import linkPng from '../favicon/favicon.png';
 
 setLanguage();
 startPageShow();
@@ -29,5 +29,6 @@ function createElementFavicon(type, favicon) {
     head.append(link);
 }
 
+debugger
 createElementFavicon('image/svg+xml', linkSvg);
 createElementFavicon('image/png', linkPng);
