@@ -9,11 +9,13 @@ import '../components/welcome/welcome.css';
 import '../../assets/styles/media.css';
 import startPageShow from './startPageShow';
 import setLanguage from './language';
-import setActiveEnglish from './languageButtons'
+import setActiveEnglish from './languageButtons';
+import rsLogo from '../svg/rs_school_js.svg';
 
 setLanguage();
 startPageShow();
 setActiveEnglish();
+document.querySelector('.rsschool-logo').setAttribute('src', rsLogo)
 
 
 
