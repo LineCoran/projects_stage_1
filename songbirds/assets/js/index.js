@@ -29,6 +29,5 @@ function createElementFavicon(type, favicon) {
     head.append(link);
 }
 
-debugger
 createElementFavicon('image/svg+xml', linkSvg);
 createElementFavicon('image/png', linkPng);
