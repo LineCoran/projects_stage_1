@@ -1,10 +1,6 @@
-interface link {
-    apiKey: string;
-}
-
-interface Options {
-    sources?: string;
-}
+export type Options = {
+    apiKey?: string;
+};
 
 type params = {
     endpoint: string;
@@ -16,9 +12,9 @@ interface UrlOptions {
 }
 
 class Loader {
-    baseLink: link;
+    baseLink: string;
     options: Options;
-    constructor(baseLink: link, options: Options) {
+    constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }
