@@ -4,7 +4,7 @@ export type Options = {
 
 type params = {
     endpoint: string;
-    options: Options;
+    options?: Options;
 };
 
 interface UrlOptions {

@@ -1,4 +1,5 @@
 import AppLoader from './appLoader';
+import { Options } from './loader';
 
 class AppController extends AppLoader {
     getSources(callback) {
@@ -6,7 +7,7 @@ class AppController extends AppLoader {
             {
                 endpoint: 'sources',
             },
-            callback
+            callback,
         );
     }
 
