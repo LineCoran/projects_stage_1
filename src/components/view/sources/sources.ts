@@ -11,8 +11,7 @@ interface Item {
 }
 
 class Sources {
-    draw(data: []) {
-        console.log(data);
+    draw(data: Item[]) {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
 
