@@ -3,13 +3,13 @@ import Sources from './sources/sources';
 import { NewsData } from './news/news';
 import { Item } from './sources/sources';
 
-interface DrawNewsData {
+export interface DrawNewsData {
     articles: NewsData[];
     status: string;
     totalResults: number;
 }
 
-interface DrawSourcesData {
+export interface DrawSourcesData {
     sources: Item[];
     status: string;
 }
