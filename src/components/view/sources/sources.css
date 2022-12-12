@@ -1,0 +1,30 @@
+.sources {
+    width: 25%;
+    padding: 10px 20px;
+    overflow: auto;
+    align-items: center;
+    font: 300 1em 'Fira Sans', sans-serif;
+}
+
+.source__item {
+    background: none;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    color: #F4EBDB;
+    transition: 0.25s linear;
+    cursor: pointer;
+}
+
+.source__item:hover,
+.source__item:focus {
+    border-color: #D0E1F9;
+    box-shadow: 0 0.5em 0.5em -0.4em #D0E1F9;
+    transform: translateY(-0.25em);
+}
+
+.source__item-name {
+    font-weight: 400;
+    white-space: nowrap;
+}
