@@ -1,9 +1,20 @@
+.news {
+    overflow: auto;
+    width: 70%;
+    transform: translateX(1000px);
+    transition: 0.3s ease-in;
+}
+
+.news-active {
+    transform: translateX(0);
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
     margin: 1rem auto;
     margin-bottom: 1.6%;
-    background: #fff;
+    background: #D0E1F9;
     color: #333;
     line-height: 1.4;
     font-family: Arial, sans-serif;
