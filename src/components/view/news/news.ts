@@ -66,8 +66,19 @@ class News {
             throw new Error('newsElement is null');
         }
 
-        newsElement.innerHTML = '';
-        newsElement.appendChild(fragment);
+        // my functional
+        if (newsElement.classList.contains('news-active')) {
+            newsElement.className = 'news';
+            setTimeout(() => {
+                newsElement.innerHTML = '';
+                newsElement.appendChild(fragment);
+                newsElement.classList.add('news-active');
+            }, 700);
+        } else {
+            newsElement.innerHTML = '';
+            newsElement.appendChild(fragment);
+            newsElement.classList.add('news-active');
+        }
     }
 }
 
